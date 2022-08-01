@@ -9,7 +9,7 @@ import { ScrollView } from 'react-native-gesture-handler'
 const Patienthome = ({ navigation }) => {
     return (
         <View>
-            <Text>Patient</Text>
+            <Text>Patient Name</Text>
         </View>
     )
 }
