@@ -16,10 +16,10 @@ const App = () => {
       <Stack.Navigator screenOptions={{ HeaderShown: false }} >
         <Stack.Screen name="Splash" component={Splash} options={{ headerShown: false }} />
         <Stack.Screen name="Onboarding" component={Onboarding} options={{ headerShown: false }} />
-        <Stack.Screen name="Login" component={Login} options={{ headerShown: false }} />
-        <Stack.Screen name="SignUp" component={SignUp} />
-        <Stack.Screen name="Optionalpd" component={Optionalpd} />
-        <Stack.Screen name="Patienthome" component={Patienthome} />
+        <Stack.Screen name="Login" component={Login} options={{ title: 'Sign In', headerBackVisible: false, headerTitleAlign: 'center', headerTitleStyle: { fontWeight: "bold", fontSize: 28, color: '#381290' } }} />
+        <Stack.Screen name="SignUp" component={SignUp} options={{ title: 'Sign Up', headerBackVisible: false, headerTitleAlign: 'center', headerTitleStyle: { fontWeight: "bold", fontSize: 28, color: '#381290' } }} />
+        <Stack.Screen name="Optionalpd" component={Optionalpd} options={{ title: 'Healthcare', headerBackVisible: false, headerTitleAlign: 'center', headerTitleStyle: { fontWeight: "bold", fontSize: 28, color: '#381290' } }} />
+        <Stack.Screen name="Patienthome" component={Patienthome} options={{ title: 'Healthcare', headerBackVisible: false, headerTitleAlign: 'center', headerTitleStyle: { fontWeight: "bold", fontSize: 28, color: '#381290' } }} />
 
 
 

@@ -16,9 +16,9 @@ const SignUp = ({ navigation }) => {
 
     return (
         <ScrollView style={{ flex: 1, backgroundColor: '#fff', flexDirection: 'column' }}>
-            <StatusBar StatusBar="dark-content" backgroundColor="#fff" />
+            <StatusBar StatusBar="dark-content" backgroundColor="#381290" />
             {/* Login from section */}
-            <View style={{ flex: 3, flexDirection: 'column', backgroundColor: '#fff', paddingHorizontal: '5%' }}>
+            <View style={{ flex: 3, flexDirection: 'column', paddingTop: 20, backgroundColor: '#fff', paddingHorizontal: '5%' }}>
 
 
                 {/* Firstbox */}
@@ -99,9 +99,9 @@ const SignUp = ({ navigation }) => {
 
                 <View style={{
                     flex: 1, flexDirection: 'row', justifyContent: 'center',
-                    alignItems: 'flex-end', backgroundColor: "#fff", marginBottom: 30
+                    alignItems: 'flex-end', backgroundColor: "#fff", marginBottom: 10
                 }}>
-                    <Text style={{ fontFamily: 'OpenSans-Medium', marginTop: 20, fontSize: 20, color: '#273746' }}>Already have an account?</Text>
+                    <Text style={{ fontFamily: 'OpenSans-Medium', marginTop: 50, fontSize: 20, color: '#273746' }}>Already have an account?</Text>
                     <TouchableOpacity onPress={() => navigation.navigate("Login")}>
                         <Text style={{ fontSize: 18, fontWeight: 'bold', paddingLeft: 5, fontFamily: 'OpenSans-SemiBold', color: '#381290' }}>Sign In</Text>
                     </TouchableOpacity>

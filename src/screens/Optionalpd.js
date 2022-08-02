@@ -8,7 +8,7 @@ import { ScrollView } from 'react-native-gesture-handler'
 const Optionalpd = ({ navigation }) => {
     return (
         <View style={{ flex: 5, flexDirection: 'column', backgroundColor: '#ddd' }}>
-            <StatusBar StatusBar="dark-content" backgroundColor='#fff' />
+            <StatusBar StatusBar="dark-content" backgroundColor='#381290' />
             <View style={{ flex: 0.11, flexDirection: 'row', backgroundColor: '#fff' }}>
                 <View style={{ flexDirection: 'row', justifyContent: 'flex-start', alignItems: 'center', marginTop: 30 }}>
                     <Text style={{ fontSize: 30, color: Colors.black, paddingLeft: 75, paddingRight: 10, fontStyle: 'italic', fontWeight: 'bold', }}>Type of Account</Text>
@@ -56,9 +56,6 @@ const Optionalpd = ({ navigation }) => {
                     </TouchableOpacity>
                 </View>
             </View>
-
-
-
         </View>
     )
 }

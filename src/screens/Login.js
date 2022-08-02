@@ -14,10 +14,10 @@ const Login = ({ navigation }) => {
     })
 
     return (
-        <ScrollView style={{ flex: 1, backgroundColor: '#fff', flexDirection: 'column' }}>
-            <StatusBar StatusBar="dark-content" backgroundColor="#fff" />
+        <ScrollView style={{ flex: 1, backgroundColor: '#381290', flexDirection: 'column' }}>
+            <StatusBar StatusBar="dark-content" backgroundColor="#381290" />
             {/* Login from section */}
-            <View style={{ flex: 3, flexDirection: 'column', backgroundColor: '#fff', paddingTop: 60, paddingHorizontal: '5%' }}>
+            <View style={{ flex: 3, flexDirection: 'column', backgroundColor: '#fff', paddingTop: 40, paddingHorizontal: '5%' }}>
                 <View style={{ flexDirection: 'row', justifyContent: 'flex-start', alignItems: 'center' }}>
                     <Text style={{ fontSize: 30, color: Colors.black, paddingLeft: 80 }}>Welcome Back</Text>
                     <Image source={require('../assets/images/wave.png')} style={{ width: 25, height: 25 }} />
@@ -29,7 +29,7 @@ const Login = ({ navigation }) => {
                     <View style={{
                         flexDirection: 'row', justifyContent: 'center',
                         alignItems: 'center', backgroundColor: '#ededed', width: '98%',
-                        borderRadius: 10, height: 60, paddingLeft: 10, marginTop: 50, borderWidth: 1, borderColor: '#381290'
+                        borderRadius: 10, height: 60, paddingLeft: 10, marginTop: 40, borderWidth: 1, borderColor: '#381290'
                     }}>
                         <Icon name="envelope-o" size={20} color="#381290" />
                         <TextInput onChangeText={(text) => { setformData((prevState) => ({ ...prevState, email: text })) }} style={styles.input} placeholder="Please Enter Email" placeholderTextColor={"#381290"} />
@@ -57,7 +57,7 @@ const Login = ({ navigation }) => {
             {/* social login section */}
             <View style={{ flex: 3, flexDirection: 'column', backgroundColor: '#fff' }}>
                 <Text style={{
-                    fontFamily: "OpenSans-Bold", textAlign: 'center', marginVertical: 10,
+                    fontFamily: "OpenSans-Bold", textAlign: 'center', marginVertical: 5,
                     color: "#381290", fontSize: 20, fontWeight: 'bold',
                 }}>Or</Text>
 
