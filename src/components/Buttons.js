@@ -8,7 +8,7 @@ const Buttons = ({ on_press, btn_text }) => {
             onPress={on_press}
         >
 
-            <Text style={{ fontSize: 15, letterSpacing: 1.5, textAlign: 'center', position: 'relative', color: Colors.white }}>{btn_text}</Text>
+            <Text style={{ fontSize: 20, letterSpacing: 1.5, textAlign: 'center', position: 'relative', color: Colors.white }}>{btn_text}</Text>
         </TouchableOpacity>
     )
 }

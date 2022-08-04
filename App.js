@@ -2,11 +2,13 @@ import { StyleSheet, Text, View } from 'react-native';
 import React from 'react';
 import { NavigationContainer } from '@react-navigation/native';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
-
 import { Splash, Onboarding, Login, } from './src/screens';
 import SignUp from './src/screens/SignUp';
 import Optionalpd from './src/screens/Optionalpd';
 import Patienthome from './src/screens/Patient/Patienthome';
+
+import LabReport from './src/screens/Patient/LabReport';
+import PDoctors from './src/screens/Patient/PDoctors'
 
 
 const Stack = createNativeStackNavigator();
@@ -16,10 +18,12 @@ const App = () => {
       <Stack.Navigator screenOptions={{ HeaderShown: false }} >
         <Stack.Screen name="Splash" component={Splash} options={{ headerShown: false }} />
         <Stack.Screen name="Onboarding" component={Onboarding} options={{ headerShown: false }} />
-        <Stack.Screen name="Login" component={Login} options={{ title: 'Sign In', headerBackVisible: false, headerTitleAlign: 'center', headerTitleStyle: { fontWeight: "bold", fontSize: 28, color: '#381290' } }} />
+        <Stack.Screen name="Login" component={Login} options={{ title: 'Sign In', headerBackVisible: false, headerTitleAlign: 'center', headerTitleStyle: { fontWeight: "bold", fontSize: 28, color: '#fff' }, headerStyle: { backgroundColor: '#381290' } }} />
         <Stack.Screen name="SignUp" component={SignUp} options={{ title: 'Sign Up', headerBackVisible: false, headerTitleAlign: 'center', headerTitleStyle: { fontWeight: "bold", fontSize: 28, color: '#381290' } }} />
         <Stack.Screen name="Optionalpd" component={Optionalpd} options={{ title: 'Healthcare', headerBackVisible: false, headerTitleAlign: 'center', headerTitleStyle: { fontWeight: "bold", fontSize: 28, color: '#381290' } }} />
         <Stack.Screen name="Patienthome" component={Patienthome} options={{ title: 'Healthcare', headerBackVisible: false, headerTitleAlign: 'center', headerTitleStyle: { fontWeight: "bold", fontSize: 28, color: '#381290' } }} />
+        <Stack.Screen name="PDoctors" component={PDoctors} options={{ title: 'My Doctors', headerBackVisible: false, headerTitleAlign: 'center', headerTitleStyle: { fontWeight: "bold", fontSize: 28, color: '#381290' } }} />
+        <Stack.Screen name="LabReport" component={LabReport} options={{ title: 'Lab Report', headerBackVisible: false, headerTitleAlign: 'center', headerTitleStyle: { fontWeight: "bold", fontSize: 28, color: '#381290' } }} />
 
 
 

@@ -11,7 +11,7 @@ import { FlatGrid } from 'react-native-super-grid';
 
 
 export default function Patienthome({ navigation }) {
-    const [items, setItems] = React.useState([
+    const [items, setItems, open] = React.useState([
         { name: 'Doctors', code: '#D1CDDD', image: require("../../assets/images/doctor.png") },
         { name: 'Apppointment', code: '#D1CDDD', image: require("../../assets/images/patient.png") },
         { name: 'Prescription', code: '#D1CDDD', image: require("../../assets/images/pres1.png") },
@@ -42,8 +42,6 @@ export default function Patienthome({ navigation }) {
                         <Text style={styles.itemName}>{item.name}</Text>
                         {/*<Text style={styles.itemCode}>{item.code}</Text>}*/}
                     </TouchableOpacity>
-
-
                 )}
             />
         </View >
