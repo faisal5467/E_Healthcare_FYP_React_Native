@@ -17,7 +17,7 @@ const Login = ({ navigation }) => {
         <ScrollView style={{ flex: 1, backgroundColor: '#381290', flexDirection: 'column' }}>
             <StatusBar StatusBar="dark-content" backgroundColor="#3704c2" />
             {/* Login from section */}
-            <View style={{ flex: 3, flexDirection: 'column', backgroundColor: '#fff', paddingTop: 40, paddingHorizontal: '5%' }}>
+            <View style={{ flex: 3, flexDirection: 'column', backgroundColor: '#fff', paddingTop: 10, paddingHorizontal: '5%' }}>
                 <View style={{ flexDirection: 'row', justifyContent: 'flex-start', alignItems: 'center' }}>
                     <Text style={{ fontSize: 30, color: Colors.black, paddingLeft: 80 }}>Welcome Back</Text>
                     <Image source={require('../assets/images/wave.png')} style={{ width: 25, height: 25 }} />
@@ -49,7 +49,7 @@ const Login = ({ navigation }) => {
                         <Text style={{ fontSize: 17, color: '#381290', alignSelf: 'flex-end', paddingTop: 10, }}>Forget Password</Text>
                     </View>
 
-                    <Buttons btn_text={"Sign In"} on_press={() => navigation.navigate("PDoctors")} />
+                    <Buttons btn_text={"Sign In"} on_press={() => navigation.navigate("Patienthome")} />
 
                 </View>
 
@@ -82,9 +82,9 @@ const Login = ({ navigation }) => {
 
                 <View style={{
                     flex: 1, flexDirection: 'row', justifyContent: 'center',
-                    alignItems: 'flex-end', backgroundColor: "#fff", marginBottom: 30
+                    alignItems: 'flex-end', backgroundColor: "#fff", marginBottom: 40
                 }}>
-                    <Text style={{ fontFamily: 'OpenSans-Medium', marginTop: 40, fontSize: 20, color: '#2C3E50' }}>Don't have a account?</Text>
+                    <Text style={{ fontFamily: 'OpenSans-Medium', marginTop: 50, fontSize: 20, color: '#2C3E50' }}>Don't have a account?</Text>
                     <TouchableOpacity onPress={() => navigation.navigate("Optionalpd")}>
                         <Text style={{ fontSize: 18, fontWeight: 'bold', paddingLeft: 5, fontFamily: 'OpenSans-SemiBold', color: '#381290' }}>Sign Up</Text>
                     </TouchableOpacity>

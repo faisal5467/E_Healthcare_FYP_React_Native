@@ -12,16 +12,18 @@ import { FlatGrid } from 'react-native-super-grid';
 
 export default function Patienthome({ navigation }) {
     const [items, setItems, open] = React.useState([
-        { name: 'Doctors', code: '#D1CDDD', image: require("../../assets/images/doctor.png") },
+        { name: 'Doctors', code: '#D1CDDD', image: require("../../assets/images/doctor.png"), open: navigation.navigate("PDoctors") },
         { name: 'Apppointment', code: '#D1CDDD', image: require("../../assets/images/patient.png") },
         { name: 'Prescription', code: '#D1CDDD', image: require("../../assets/images/pres1.png") },
         { name: 'Lab Report', code: '#D1CDDD', image: require("../../assets/images/lab.png") },
         { name: 'Patient History', code: '#D1CDDD', image: require("../../assets/images/phistory.png") },
-        { name: 'View Schedule', code: '#D1CDDD', image: require("../../assets/images/shedule.png") },
-        { name: 'View Appointment', code: '#D1CDDD', image: require("../../assets/images/view.png") },
+        //{ name: 'View Schedule', code: '#D1CDDD', image: require("../../assets/images/shedule.png") },
+        //{ name: 'View Appointment', code: '#D1CDDD', image: require("../../assets/images/view.png") },
         { name: 'Help', code: '#D1CDDD', image: require("../../assets/images/help.png") },
 
-    ]);
+    ])
+
+
 
     return (
         <View style={{ flex: 1, backgroundColor: '#fff' }}>
@@ -37,7 +39,7 @@ export default function Patienthome({ navigation }) {
                 // fixed
                 spacing={20}
                 renderItem={({ item }) => (
-                    <TouchableOpacity style={[styles.itemContainer, { backgroundColor: item.code }]}>
+                    <TouchableOpacity osn_press={() => item.open} style={[styles.itemContainer, { backgroundColor: item.code }]}>
                         <Image style={styles.img_design} source={item.image} />
                         <Text style={styles.itemName}>{item.name}</Text>
                         {/*<Text style={styles.itemCode}>{item.code}</Text>}*/}
