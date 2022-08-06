@@ -11,7 +11,7 @@ const PDoctors = ({ navigation }) => {
     return (
         <View style={{ flex: 1, backgroundColor: '#fff' }}>
             <StatusBar StatusBar="dark-content" backgroundColor='#381290' />
-            <View style={{ flex: 0.11, flexDirection: 'row' }}>
+            <View style={{ flex: 0.1, flexDirection: 'row' }}>
                 <View style={{ flexDirection: 'row', justifyContent: 'flex-start', marginTop: 10 }}>
                     <Text style={{
                         fontSize: 20, color: Colors.black, paddingLeft: 70, paddingRight: 10,
@@ -26,7 +26,7 @@ const PDoctors = ({ navigation }) => {
 
 
 
-            <View style={{ flex: 0.17, flexDirection: 'row', backgroundColor: '#fff' }}>
+            <View style={{ flex: 0.13, flexDirection: 'row', backgroundColor: '#fff' }}>
                 <View style={{ flexDirection: 'row', justifyContent: 'flex-start', alignItems: 'center', paddingLeft: 55, paddingBottom: 10 }}>
                     <Text style={{ fontSize: 20, color: "#525157", textAlign: 'center' }}>Choose the Doctor and make an Appointment</Text>
                 </View>
@@ -40,11 +40,11 @@ const PDoctors = ({ navigation }) => {
                         <View>
                             <View style={styles.itemContainer}>
                                 <View style={{ flexDirection: "row" }}>
-                                    <View style={{ paddingTop: 20, paddingLeft: 10 }}>
+                                    <View style={{ paddingTop: 10, paddingLeft: 10 }}>
                                         <Image source={item.image} style={{ width: 110, height: 110, borderRadius: 50 }} />
                                     </View>
                                     <View>
-                                        <Text style={{ fontSize: 20, paddingTop: 20, paddingLeft: 40, fontWeight: 'bold', color: '#525157' }} >{item.name}</Text>
+                                        <Text style={{ fontSize: 20, paddingTop: 10, paddingLeft: 40, fontWeight: 'bold', color: '#525157' }} >{item.name}</Text>
                                         <Text style={{ fontSize: 15, paddingTop: 10, paddingLeft: 40, color: '#525157' }} >{item.specialist}</Text>
                                         <Text style={{ fontSize: 15, paddingTop: 10, paddingLeft: 40, color: '#525157' }} >{item.email}</Text>
                                     </View>
@@ -73,7 +73,7 @@ const styles = StyleSheet.create({
         flex: 1,
         backgroundColor: '#EAF5F0',
         borderRadius: 10,
-        height: 260,
+        height: 240,
         marginHorizontal: '4%',
         marginVertical: '2%',
         shadowOffset: { width: 0, height: 0 },

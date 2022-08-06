@@ -14,6 +14,8 @@ import Prescription from './src/screens/Patient/Prescription';
 import ViewAppointment from './src/screens/Patient/ViewAppointment';
 import PHelp from './src/screens/Patient/PHelp';
 import PHistory from './src/screens/Patient/PHistory';
+import EditProfile from './src/screens/Patient/EditProfile';
+import MyProfile from './src/screens/Patient/MyProfile';
 
 
 const Stack = createNativeStackNavigator();
@@ -34,6 +36,8 @@ const App = () => {
         <Stack.Screen name="ViewAppointment" component={ViewAppointment} options={{ title: 'View Appointment', headerTitleAlign: 'center', headerTitleStyle: { fontWeight: "bold", fontSize: 28, color: '#381290' } }} />
         <Stack.Screen name="PHelp" component={PHelp} options={{ title: 'Emergency Helpline', headerTitleAlign: 'center', headerTitleStyle: { fontWeight: "bold", fontSize: 28, color: '#381290' } }} />
         <Stack.Screen name="PHistory" component={PHistory} options={{ title: 'Patient History', headerTitleAlign: 'center', headerTitleStyle: { fontWeight: "bold", fontSize: 28, color: '#381290' } }} />
+        <Stack.Screen name="EditProfile" component={EditProfile} options={{ title: 'Edit Profile', headerTitleAlign: 'center', headerTitleStyle: { fontWeight: "bold", fontSize: 28, color: '#381290' } }} />
+        <Stack.Screen name="MyProfile" component={MyProfile} options={{ title: 'Profile', headerBackVisible: false, headerTitleStyle: { fontWeight: "bold", fontSize: 28, color: '#fff' }, headerStyle: { backgroundColor: '#381290' } }} />
 
 
 

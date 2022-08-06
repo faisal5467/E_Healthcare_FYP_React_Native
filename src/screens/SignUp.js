@@ -4,6 +4,8 @@ import { Colors } from '../constants'
 import Icon from 'react-native-vector-icons/FontAwesome'
 import Buttons from '../components/Buttons'
 import { ScrollView } from 'react-native-gesture-handler'
+import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons'
+import Ionicons from 'react-native-vector-icons/Ionicons'
 
 const SignUp = ({ navigation }) => {
 
@@ -28,7 +30,7 @@ const SignUp = ({ navigation }) => {
                         alignItems: 'center', backgroundColor: '#ededed', width: '98%',
                         borderRadius: 10, height: 60, paddingLeft: 10, marginTop: 20
                     }}>
-                        <Icon name="envelope-o" size={20} color="#381290" />
+                        <MaterialCommunityIcons name="account" size={20} color="#381290" />
                         <TextInput onChangeText={(text) => { setformData((prevState) => ({ ...prevState, email: text })) }}
                             style={styles.input} placeholder="Full Name" placeholderTextColor={"#381290"} />
                     </View>
@@ -38,7 +40,7 @@ const SignUp = ({ navigation }) => {
                         alignItems: 'center', backgroundColor: '#ededed', width: '98%',
                         borderRadius: 10, height: 60, paddingLeft: 10, marginTop: 10
                     }}>
-                        <Icon name="envelope-o" size={20} color="#381290" />
+                        <MaterialCommunityIcons name="email" size={20} color="#381290" />
                         <TextInput onChangeText={(text) => { setformData((prevState) => ({ ...prevState, password: text })) }}
                             style={styles.input} placeholder="Email" secureTextEntry={true} placeholderTextColor={"#381290"} />
                     </View>
@@ -48,7 +50,7 @@ const SignUp = ({ navigation }) => {
                         alignItems: 'center', backgroundColor: '#ededed', width: '98%',
                         borderRadius: 10, height: 60, paddingLeft: 10, marginTop: 10,
                     }}>
-                        <Icon name="lock" size={20} color="#381290" />
+                        <Ionicons name="call" size={20} color="#381290" />
                         <TextInput onChangeText={(text) => { setformData((prevState) => ({ ...prevState, password: text })) }}
                             style={styles.input} placeholder="Mobile" secureTextEntry={true} placeholderTextColor={"#381290"} />
                     </View>
