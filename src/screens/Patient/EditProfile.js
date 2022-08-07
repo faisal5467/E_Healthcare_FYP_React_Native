@@ -46,7 +46,6 @@ const EditProfile = () => {
                                     }} />
                                 </View>
                             </ImageBackground>
-
                         </View>
                     </TouchableOpacity>
                     <Text style={{ marginTop: 10, fontSize: 18, fontWeight: 'bold' }}>Mr.Faisal
