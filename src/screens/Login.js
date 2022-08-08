@@ -49,7 +49,7 @@ const Login = ({ navigation }) => {
                         <Text style={{ fontSize: 17, color: '#381290', alignSelf: 'flex-end', paddingTop: 10, }}>Forget Password</Text>
                     </View>
 
-                    <Buttons btn_text={"Sign In"} on_press={() => navigation.navigate("EditProfile")} />
+                    <Buttons btn_text={"Sign In"} on_press={() => navigation.navigate("Patienthome")} />
 
                 </View>
 
