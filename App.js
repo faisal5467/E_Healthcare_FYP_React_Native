@@ -1,28 +1,45 @@
 import { StyleSheet, Text, View } from 'react-native';
 import React from 'react';
+
+// import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import { NavigationContainer } from '@react-navigation/native';
-import { createNativeStackNavigator } from '@react-navigation/native-stack';
-import { Splash, Onboarding, Login, } from './src/screens';
-import SignUp from './src/screens/SignUp';
-import Optionalpd from './src/screens/Optionalpd';
-import Patienthome from './src/screens/Patient/Patienthome';
+// import DrawerNavigator from './src/screens/navigation/DrawerNavigator';
+// import BottomTabNavigator from './src/screens/navigation/DrawerNavigator';
+import MainStackNavigator from './src/screens/navigation/StackNavigator';
 
-import LabReport from './src/screens/Patient/LabReport';
-import PDoctors from './src/screens/Patient/PDoctors'
-import BookAppointment from './src/screens/Patient/BookAppointment';
-import Prescription from './src/screens/Patient/Prescription';
-import ViewAppointment from './src/screens/Patient/ViewAppointment';
-import PHelp from './src/screens/Patient/PHelp';
-import PHistory from './src/screens/Patient/PHistory';
-import EditProfile from './src/screens/Patient/EditProfile';
-import MyProfile from './src/screens/Patient/MyProfile';
-import TextScreen from './src/screens/Patient/TextScreen';
 
-const Stack = createNativeStackNavigator();
+import DrawerM from './src/screens/navigation/DrawerM';
+
+// import { createStackNavigator } from '@react-navigation/stack';
+// import { Splash, Onboarding, Login, } from './src/screens';
+// import SignUp from './src/screens/SignUp';
+// import Optionalpd from './src/screens/Optionalpd';
+// import Patienthome from './src/screens/Patient/Patienthome';
+// import LabReport from './src/screens/Patient/LabReport';
+// import PDoctors from './src/screens/Patient/PDoctors'
+// import BookAppointment from './src/screens/Patient/BookAppointment';
+// import Prescription from './src/screens/Patient/Prescription';
+// import ViewAppointment from './src/screens/Patient/ViewAppointment';
+// import PHelp from './src/screens/Patient/PHelp';
+// import PHistory from './src/screens/Patient/PHistory';
+// import EditProfile from './src/screens/Patient/EditProfile';
+// import MyProfile from './src/screens/Patient/MyProfile';
+// import TextScreen from './src/screens/Patient/TextScreen';
+
+
+
+// const Stack = createStackNavigator();
+
 const App = () => {
   return (
+
     <NavigationContainer>
-      <Stack.Navigator screenOptions={{ HeaderShown: false }} >
+
+
+      <MainStackNavigator />
+
+
+      {/* <Stack.Navigator screenOptions={{ HeaderShown: false }} >
         <Stack.Screen name="Splash" component={Splash} options={{ headerShown: false }} />
         <Stack.Screen name="Onboarding" component={Onboarding} options={{ headerShown: false }} />
         <Stack.Screen name="Login" component={Login} options={{ title: 'Sign In', headerBackVisible: false, headerTitleAlign: 'center', headerTitleStyle: { fontWeight: "bold", fontSize: 28, color: '#fff' }, headerStyle: { backgroundColor: '#381290' } }} />
@@ -39,13 +56,7 @@ const App = () => {
         <Stack.Screen name="EditProfile" component={EditProfile} options={{ title: 'Profile', headerBackVisible: false, headerTitleStyle: { fontWeight: "bold", fontSize: 28, color: '#fff' }, headerStyle: { backgroundColor: '#381290' } }} />
         <Stack.Screen name="MyProfile" component={MyProfile} options={{ title: 'Profile', headerBackVisible: false, headerTitleStyle: { fontWeight: "bold", fontSize: 28, color: '#fff' }, headerStyle: { backgroundColor: '#381290' } }} />
         <Stack.Screen name="TextScreen" component={TextScreen} options={{ headerShown: false }} />
-
-
-
-
-
-
-      </Stack.Navigator>
+      </Stack.Navigator> */}
     </NavigationContainer>
   );
 }

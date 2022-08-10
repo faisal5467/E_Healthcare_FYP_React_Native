@@ -106,16 +106,6 @@ const MyProfile = () => {
 
 
 
-
-
-
-
-
-
-
-
-
-
             <Animated.View style={{
                 flexGrow: 1,
                 backgroundColor: 'white',
@@ -147,7 +137,7 @@ const MyProfile = () => {
                         // Do Actions Here....
                         // Scaling the view...
                         Animated.timing(scaleValue, {
-                            toValue: showMenu ? 1 : 0.8,
+                            toValue: showMenu ? 1 : 0.7,
                             duration: 300,
                             useNativeDriver: true
                         })
@@ -187,21 +177,6 @@ const MyProfile = () => {
                 </Animated.View>
 
             </Animated.View>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
         </SafeAreaView>

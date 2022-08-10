@@ -1,10 +1,6 @@
 import { Animated, Image, StatusBar, SafeAreaView, StyleSheet, Text, TouchableOpacity, View, FlatList } from 'react-native';
 import { createDrawerNavigator } from '@react-navigation/drawer';
 import React from 'react';
-import { Colors } from '../constants'
-import Icon from 'react-native-vector-icons/FontAwesome'
-import { createBottomTabNavigator } from '@react-navigation/bottom-tabs'
-import { ScrollView } from 'react-native-gesture-handler'
 import { FlatGrid } from 'react-native-super-grid';
 import PHomeFlatList from './PHomeFlatList';
 import MaterialIcons from 'react-native-vector-icons/MaterialIcons'
@@ -24,15 +20,6 @@ export default function Patienthome({ navigation }) {
 
     ])
 
-    //  Menu ka properties use kr raha
-    // to get the surrent status of menu// 
-    const [showMenu, setShowMenu] = useState(false);
-
-    // Animated properties
-    const offsetValue = useRef(new Animated.Value(0)).current;
-    // scall initial must be one..
-    const scaleValue = useRef(new Animated.Value(1)).current;
-    const closeButtonOffset = useRef(new Animated.Value(0)).current;
 
 
     const handleList = ({ item }) => {
@@ -64,36 +51,13 @@ export default function Patienthome({ navigation }) {
             <StatusBar StatusBar="dark-content" backgroundColor='#381290' />
 
 
-            {/*new menw bana raha  */}
+            {/* new menw bana raha  */}
 
-
-            <Animated.View style={{ flex: .2, position: 'relative', backgroundColor: 'yellow', borderRadius: showMenu ? 15 : 0, transform: [{ scale: scaleValue }, { translateX: offsetValue }] }}>
-                <TouchableOpacity onPress={() => {
-                    // do action here
-                    //scaling the view
-                    Animated.timing(scaleValue, {
-                        toValue: showMenu ? 1 : 0.88,
-                        duration: 300,
-                        useNativeDriver: true
-                    })
-                        .start()
-
-                    Animated.timing(offsetValue, {
-                        toValue: showMenu ? 0 : 220,
-                        duration: 300,
-                        useNativeDriver: true
-                    })
-                        .start()
-
-                    setShowMenu(!showMenu)
-                }} style={{ flex: 1, flexDirection: 'row', backgroundColor: 'gray', width: '10%', marginLeft: 7 }}>
+            <View style={{ flex: .2, position: 'relative', backgroundColor: 'yellow', borderRadius: 10 }}>
+                <TouchableOpacity onPress={() => navigation.navigate("MyProfile")} style={{ flex: 1, flexDirection: 'row', backgroundColor: 'gray', width: '10%', marginLeft: 7 }}>
                     <MaterialIcons name="menu" color='black' size={40} />
                 </TouchableOpacity>
-            </Animated.View>
-
-            {/* Menu yaha tak hai */}
-
-
+            </View>
 
 
 
