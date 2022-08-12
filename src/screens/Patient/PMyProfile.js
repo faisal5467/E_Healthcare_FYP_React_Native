@@ -1,9 +1,8 @@
 import { StyleSheet, Text, View, Image, TouchableOpacity } from 'react-native'
 import React, { useState } from 'react'
-import { Component } from 'react'
 import { SafeAreaView } from 'react-native-safe-area-context'
 import Icon from 'react-native-vector-icons/MaterialIcons'
-const MyProfile = () => {
+const PMyProfile = () => {
 
   const [currentTab, setCurrentTab] = useState("Edit Profile")
 
@@ -130,7 +129,7 @@ const TabButton = (currentTab, setCurrentTab, title, image) => {
 }
 
 
-export default MyProfile
+export default PMyProfile
 
 const styles = StyleSheet.create({
   container: {

@@ -1,23 +1,24 @@
 import * as React from 'react';
-import { Button, View } from 'react-native';
+import { StyleSheet, View } from 'react-native';
 import { createDrawerNavigator } from '@react-navigation/drawer';
-import { NavigationContainer } from '@react-navigation/native';
 import Patienthome from '../Patient/Patienthome';
-import EditProfile from '../Patient/EditProfile';
 import PDoctors from '../Patient/PDoctors';
-
-
+import PMyProfile from '../Patient/PMyProfile';
+import PHelp from '../Patient/PHelp';
+import PHistory from '../Patient/PHistory';
 const Drawer = createDrawerNavigator();
-
-export default function DrawerM() {
+const DrawerM = () => {
     return (
-
         <Drawer.Navigator initialRouteName="Patienthome">
             <Drawer.Screen name="Patienthome" component={Patienthome} />
-            <Drawer.Screen name="EditProfile" component={EditProfile} />
-            <Drawer.Screen name="PDoctors" component={PDoctors} />
-
+            <Drawer.Screen name="PHelp" component={PHelp} />
+            <Drawer.Screen name="PHistory" component={PHistory} />
         </Drawer.Navigator>
-
-    );
+    )
 }
+export default DrawerM
+
+const styles = StyleSheet.create({})
+
+
+

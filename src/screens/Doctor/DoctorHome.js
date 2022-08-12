@@ -1,13 +1,15 @@
 import { Image, StatusBar, SafeAreaView, StyleSheet, Text, TouchableOpacity, View, FlatList } from 'react-native';
+
 import React from 'react';
 import { FlatGrid } from 'react-native-super-grid';
-import PHomeFlatList from './PHomeFlatList';
+import PHomeFlatList from '../Patient/PHomeFlatList';
 import MaterialIcons from 'react-native-vector-icons/MaterialIcons'
 
 
-export default function Patienthome({ navigation }) {
+
+export default function DoctorHome({ navigation }) {
     const [items, setItems] = React.useState([
-        { name: 'Doctors', code: '#D1CDDD', image: require("../../assets/images/doctor.png") },
+        { name: 'Patients', code: '#D1CDDD', image: require("../../assets/images/doctor.png") },
         { name: 'Apppointment', code: '#D1CDDD', image: require("../../assets/images/patient.png") },
         { name: 'Prescription', code: '#D1CDDD', image: require("../../assets/images/pres1.png") },
         { name: 'Lab Report', code: '#D1CDDD', image: require("../../assets/images/lab.png") },
@@ -67,9 +69,7 @@ export default function Patienthome({ navigation }) {
                 renderItem={handleList}
             />
 
-            <Text style={{ flex: 0.2, textAlign: 'center', backgroundColor: 'white', fontSize: 24, color: 'black', fontWeight: 'bold' }}>
-                What are you looking for?
-            </Text>
+
 
             <View style={{ flex: 2 }}>
                 <FlatGrid
