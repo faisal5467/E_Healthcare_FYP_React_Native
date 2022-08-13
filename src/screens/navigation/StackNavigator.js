@@ -1,6 +1,7 @@
 import { StyleSheet, Text, View } from 'react-native';
 import React from 'react';
-import { createStackNavigator } from '@react-navigation/stack';
+import { createNativeStackNavigator } from '@react-navigation/native-stack'
+import DrawerNavig from './DrawerNavig';
 import Splash from '../Splash';
 import Onboarding from '../Onboarding';
 import Login from '../Login';
@@ -23,12 +24,17 @@ import Privacy from '../../components/Privacy';
 
 
 
-const Stack = createStackNavigator();
+
+
+
+
+const Stack = createNativeStackNavigator();
 
 const MainStackNavigator = () => {
     return (
 
         <Stack.Navigator screenOptions={{ HeaderShown: false }} >
+            <Stack.Screen name="DrawerNavig" component={DrawerNavig} />
             <Stack.Screen name="Splash" component={Splash} options={{ headerShown: false }} />
             <Stack.Screen name="Onboarding" component={Onboarding} options={{ headerShown: false }} />
             <Stack.Screen name="Login" component={Login} options={{ title: 'Sign In', headerBackVisible: false, headerTitleAlign: 'center', headerTitleStyle: { fontWeight: "bold", fontSize: 28, color: '#fff' }, headerStyle: { backgroundColor: '#381290' } }} />
