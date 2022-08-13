@@ -1,8 +1,6 @@
 import { StyleSheet, Text, View } from 'react-native';
 import React from 'react';
-import { createDrawerNavigator } from '@react-navigation/drawer';
 import { createStackNavigator } from '@react-navigation/stack';
-import DrawerM from './DrawerM';
 import Splash from '../Splash';
 import Onboarding from '../Onboarding';
 import Login from '../Login';
@@ -23,8 +21,6 @@ import Profile from '../../components/Profile';
 import DoctorHome from '../Doctor/DoctorHome';
 import Privacy from '../../components/Privacy';
 
-
-// import MyProfile from '../Patient/MyProfile'
 
 
 const Stack = createStackNavigator();
@@ -52,9 +48,6 @@ const MainStackNavigator = () => {
             <Stack.Screen name="Profile" component={Profile} options={{ title: 'My Profile', headerBackVisible: false, headerTitleStyle: { fontWeight: "bold", fontSize: 28, color: '#fff' }, headerStyle: { backgroundColor: '#381290' } }} />
             <Stack.Screen name="DoctorHome" component={DoctorHome} options={{ title: 'My Doctors', headerTitleAlign: 'center', headerTitleStyle: { fontWeight: "bold", fontSize: 28, color: '#381290' } }} />
             <Stack.Screen name="Privacy" component={Privacy} options={{ title: 'Healthcare', headerTitleAlign: 'center', headerTitleStyle: { fontWeight: "bold", fontSize: 28, color: '#381290' } }} />
-
-
-
 
         </Stack.Navigator>
 

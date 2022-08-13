@@ -51,11 +51,11 @@ export default function Patienthome({ navigation }) {
 
             {/* new menw bana raha  */}
 
-            <View style={{ flex: .2, position: 'relative', backgroundColor: 'yellow', borderRadius: 10 }}>
+            {/* <View style={{ flex: .2, position: 'relative', backgroundColor: 'yellow', borderRadius: 10 }}>
                 <TouchableOpacity onPress={() => navigation.navigate("Profile")} style={{ flex: 1, flexDirection: 'row', backgroundColor: 'gray', width: '10%', marginLeft: 7 }}>
                     <MaterialIcons name="menu" color='black' size={40} />
                 </TouchableOpacity>
-            </View>
+            </View> */}
 
 
 
