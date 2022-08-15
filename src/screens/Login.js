@@ -29,7 +29,7 @@ const Login = ({ navigation }) => {
                     <View style={{
                         flexDirection: 'row', justifyContent: 'center',
                         alignItems: 'center', backgroundColor: '#ededed', width: '98%',
-                        borderRadius: 10, height: 60, paddingLeft: 10, marginTop: 40, borderWidth: 1, borderColor: '#381290'
+                        borderRadius: 10, height: 60, paddingLeft: 10, marginTop: 60, borderWidth: 1.2, borderColor: '#381290'
                     }}>
                         <Icon name="envelope-o" size={20} color="#381290" />
                         <TextInput onChangeText={(text) => { setformData((prevState) => ({ ...prevState, email: text })) }} style={styles.input} placeholder="Please Enter Email" placeholderTextColor={"#381290"} />
@@ -38,7 +38,7 @@ const Login = ({ navigation }) => {
                     <View style={{
                         flexDirection: 'row', justifyContent: 'center',
                         alignItems: 'center', backgroundColor: '#ededed', width: '98%',
-                        borderRadius: 10, height: 60, paddingLeft: 10, marginTop: 15, borderWidth: 1, borderColor: '#381290'
+                        borderRadius: 10, height: 60, paddingLeft: 10, marginTop: 15, borderWidth: 1.2, borderColor: '#381290'
                     }}>
                         <Icon name="lock" size={20} color="#381290" />
                         <TextInput onChangeText={(text) => { setformData((prevState) => ({ ...prevState, password: text })) }}
@@ -46,10 +46,12 @@ const Login = ({ navigation }) => {
                     </View>
 
                     <View style={{ width: '95%', marginBottom: 35 }}>
-                        <Text style={{ fontSize: 17, color: '#381290', alignSelf: 'flex-end', paddingTop: 10, }}>Forget Password</Text>
+                        <TouchableOpacity>
+                            <Text style={{ fontSize: 17, color: '#381290', alignSelf: 'flex-end', paddingTop: 10, }}>Forget Password</Text>
+                        </TouchableOpacity>
                     </View>
 
-                    <Buttons btn_text={"Sign In"} on_press={() => navigation.navigate("Patienthome")} />
+                    <Buttons btn_text={"Sign In"} on_press={() => navigation.navigate("PHelp")} />
 
                 </View>
 
@@ -70,14 +72,14 @@ const Login = ({ navigation }) => {
                             fontWeight: 'bold', fontSize: 20, fontFamily: 'OpenSans-Medium', color: '#273746'
                         }}> Sign In with Google </Text>
                     </TouchableOpacity>
-                    <TouchableOpacity onPress={() => console.log("facebook login")} style={styles.social_btn}>
+                    {/* <TouchableOpacity onPress={() => console.log("facebook login")} style={styles.social_btn}>
                         <Image style={styles.social_img} source=
                             {require('../assets/images/facebook.png')} />
                         <Text style={{
                             width: '80%', paddingRight: 50, textAlign: 'center',
                             fontWeight: 'bold', fontSize: 20, fontFamily: 'OpenSans-Medium', color: '#273746'
                         }}> Sign In with Facebook </Text>
-                    </TouchableOpacity>
+                    </TouchableOpacity> */}
                 </View>
 
                 <View style={{
@@ -90,10 +92,6 @@ const Login = ({ navigation }) => {
                     </TouchableOpacity>
 
                 </View>
-
-
-
-
 
             </View>
         </ScrollView >
@@ -114,13 +112,14 @@ const styles = StyleSheet.create({
     social_btn: {
         height: 55,
         width: '92%',
-        borderWidth: 1,
+        borderWidth: 1.3,
         borderRadius: 10,
         borderColor: '#381290',
         flexDirection: 'row',
         marginLeft: 20,
         alignItems: 'center',
         marginBottom: 20,
+        marginTop: 30,
         backgroundColor: '#ededed'
     },
     social_img: {

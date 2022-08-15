@@ -4,17 +4,16 @@ import { FlatGrid } from 'react-native-super-grid';
 import PHomeFlatList from './PHomeFlatList';
 import MaterialIcons from 'react-native-vector-icons/MaterialIcons'
 
-
 export default function Patienthome({ navigation }) {
-    const [items, setItems] = React.useState([
-        { name: 'Doctors', code: '#D1CDDD', image: require("../../assets/images/doctor.png") },
-        { name: 'Apppointment', code: '#D1CDDD', image: require("../../assets/images/patient.png") },
-        { name: 'Prescription', code: '#D1CDDD', image: require("../../assets/images/pres1.png") },
-        { name: 'Lab Report', code: '#D1CDDD', image: require("../../assets/images/lab.png") },
-        { name: 'Patient History', code: '#D1CDDD', image: require("../../assets/images/phistory.png") },
+    const [items] = React.useState([
+        { name: 'Doctors', code: '#D1CDDD', image: require("../../assets/images/doctor.png"), linking: ("PDoctors") },
+        { name: 'Apppointment', code: '#D1CDDD', image: require("../../assets/images/patient.png"), linking: ("BookAppointment") },
+        { name: 'Prescription', code: '#D1CDDD', image: require("../../assets/images/pres1.png"), linking: ("Prescription") },
+        { name: 'LabReport', code: '#D1CDDD', image: require("../../assets/images/lab.png"), linking: ("LabReport") },
+        { name: 'PatientHistory', code: '#D1CDDD', image: require("../../assets/images/phistory.png"), linking: ("PHistory") },
         //{ name: 'View Schedule', code: '#D1CDDD', image: require("../../assets/images/shedule.png") },
         //{ name: 'View Appointment', code: '#D1CDDD', image: require("../../assets/images/view.png") },
-        { name: 'Help', code: '#D1CDDD', image: require("../../assets/images/help.png") },
+        { name: 'PHelp', code: '#D1CDDD', image: require("../../assets/images/help.png"), linking: ("PHelp") },
 
     ])
 
@@ -79,8 +78,8 @@ export default function Patienthome({ navigation }) {
                     // staticDimension={300}
                     // fixed
                     spacing={20}
-                    renderItem={({ item }) => (
-                        <TouchableOpacity style={[styles.itemContainer, { backgroundColor: item.code }]}>
+                    renderItem={({ item, index }) => (
+                        <TouchableOpacity onPress={() => navigation.navigate(item.linking)} style={[styles.itemContainer, { backgroundColor: item.code }]}>
                             <Image style={styles.img_design} source={item.image} />
                             <Text style={styles.itemName}>{item.name}</Text>
                             {/*<Text style={styles.itemCode}>{item.code}</Text>}*/}

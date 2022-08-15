@@ -89,14 +89,14 @@ const SignUp = ({ navigation }) => {
                             fontWeight: 'bold', fontSize: 20, fontFamily: 'OpenSans-Medium', color: '#273746'
                         }}> Sign up with Google  </Text>
                     </TouchableOpacity>
-                    <TouchableOpacity onPress={() => console.log("facebook login")} style={styles.social_btn}>
+                    {/* <TouchableOpacity onPress={() => console.log("facebook login")} style={styles.social_btn}>
                         <Image style={styles.social_img} source=
                             {require('../assets/images/facebook.png')} />
                         <Text style={{
                             width: '80%', paddingRight: 50, textAlign: 'center',
                             fontWeight: 'bold', fontSize: 20, fontFamily: 'OpenSans-Medium', color: '#273746'
                         }}> Sign up with Facebook</Text>
-                    </TouchableOpacity>
+                    </TouchableOpacity> */}
                 </View>
 
                 <View style={{
@@ -134,18 +134,20 @@ const styles = StyleSheet.create({
     },
     social_btn: {
         height: 55,
-        width: '100%',
-        borderWidth: 1,
+        width: '96%',
+        borderWidth: 1.5,
         borderRadius: 10,
-        borderColor: '#ddd',
+        borderColor: '#381290',
         flexDirection: 'row',
         marginLeft: 20,
         alignItems: 'center',
-        marginBottom: 20
+        marginBottom: 40,
+        marginTop: 30,
+        backgroundColor: '#ededed'
     },
     social_img: {
         width: 30,
         height: 30,
-        marginLeft: 40
+        marginLeft: 50
     }
 })

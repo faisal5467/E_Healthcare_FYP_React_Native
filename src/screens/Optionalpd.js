@@ -37,7 +37,7 @@ const Optionalpd = ({ navigation }) => {
                         }}> I am a Patient </Text>
                     </TouchableOpacity>
 
-                    <TouchableOpacity onPress={() => console.log("facebook login")} style={styles.social_btn}>
+                    <TouchableOpacity onPress={() => navigation.navigate("SignUp")} style={styles.social_btn}>
                         <Image style={styles.social_img} source=
                             {require('../assets/images/doctor.png')} />
                         <Text style={{
@@ -46,7 +46,7 @@ const Optionalpd = ({ navigation }) => {
                         }}> I am a Doctor </Text>
                     </TouchableOpacity>
 
-                    <TouchableOpacity onPress={() => console.log("facebook login")} style={styles.social_btn}>
+                    <TouchableOpacity onPress={() => navigation.navigate("SignUp")} style={styles.social_btn}>
                         <Image style={styles.social_img} source=
                             {require('../assets/images/pharmacy.png')} />
                         <Text style={{

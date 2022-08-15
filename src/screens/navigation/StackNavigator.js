@@ -13,7 +13,7 @@ import LabReport from '../Patient/LabReport'
 import BookAppointment from '../Patient/BookAppointment'
 import Prescription from '../Patient/Prescription'
 import ViewAppointment from '../Patient/ViewAppointment'
-import PHelp from '../Patient/PHelp'
+import PHelp from '../../components/PHelp'
 import PHistory from '../Patient/LabReport'
 import EditProfile from '../Patient/EditProfile'
 import PMyProfile from '../Patient/PMyProfile'
@@ -21,10 +21,7 @@ import TextScreen from '../Patient/TextScreen'
 import Profile from '../../components/Profile';
 import DoctorHome from '../Doctor/DoctorHome';
 import Privacy from '../../components/Privacy';
-
-
-
-
+import ContactUs from '../../components/ContactUs';
 
 
 
@@ -32,12 +29,11 @@ const Stack = createNativeStackNavigator();
 
 const MainStackNavigator = () => {
     return (
-
         <Stack.Navigator screenOptions={{ HeaderShown: false }} >
-            <Stack.Screen name="DrawerNavig" component={DrawerNavig} />
+            {/* <Stack.Screen name="DrawerNavig" component={DrawerNavig} options={{ headerShown: false }} /> */}
             <Stack.Screen name="Splash" component={Splash} options={{ headerShown: false }} />
             <Stack.Screen name="Onboarding" component={Onboarding} options={{ headerShown: false }} />
-            <Stack.Screen name="Login" component={Login} options={{ title: 'Sign In', headerBackVisible: false, headerTitleAlign: 'center', headerTitleStyle: { fontWeight: "bold", fontSize: 28, color: '#fff' }, headerStyle: { backgroundColor: '#381290' } }} />
+            <Stack.Screen name="Login" component={Login} options={{ title: 'Sign In', headerBackVisible: false, headerTitleAlign: 'center', headerTitleStyle: { fontWeight: "bold", fontSize: 28, color: '#381290' } }} />
             <Stack.Screen name="SignUp" component={SignUp} options={{ title: 'Sign Up', headerTitleAlign: 'center', headerTitleStyle: { fontWeight: "bold", fontSize: 28, color: '#381290' } }} />
             <Stack.Screen name="Optionalpd" component={Optionalpd} options={{ title: 'Healthcare', headerTitleAlign: 'center', headerTitleStyle: { fontWeight: "bold", fontSize: 28, color: '#381290' } }} />
             <Stack.Screen name="Patienthome" component={Patienthome} options={{ headerShown: false }} />
@@ -54,6 +50,7 @@ const MainStackNavigator = () => {
             <Stack.Screen name="Profile" component={Profile} options={{ title: 'My Profile', headerBackVisible: false, headerTitleStyle: { fontWeight: "bold", fontSize: 28, color: '#fff' }, headerStyle: { backgroundColor: '#381290' } }} />
             <Stack.Screen name="DoctorHome" component={DoctorHome} options={{ title: 'My Doctors', headerTitleAlign: 'center', headerTitleStyle: { fontWeight: "bold", fontSize: 28, color: '#381290' } }} />
             <Stack.Screen name="Privacy" component={Privacy} options={{ title: 'Healthcare', headerTitleAlign: 'center', headerTitleStyle: { fontWeight: "bold", fontSize: 28, color: '#381290' } }} />
+            <Stack.Screen name="ContactUs" component={ContactUs} options={{ title: 'Healthcare', headerTitleAlign: 'center', headerTitleStyle: { fontWeight: "bold", fontSize: 28, color: '#381290' } }} />
 
         </Stack.Navigator>
 

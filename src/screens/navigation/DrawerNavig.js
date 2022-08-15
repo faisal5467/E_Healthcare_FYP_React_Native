@@ -1,20 +1,34 @@
-import { StyleSheet, Text, View } from 'react-native'
+import { Share, StyleSheet, Text, View } from 'react-native'
 import React from 'react'
-// import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import { createDrawerNavigator } from '@react-navigation/drawer'
+import CustomDrawer from '../../components/CustomDrawer';
+import MaterialIcons from 'react-native-vector-icons/MaterialIcons'
 import PMyProfile from '../Patient/PMyProfile';
 import Patienthome from '../Patient/Patienthome';
-
-
+import EditProfile from '../Patient/EditProfile';
+import ShareIt from '../../components/ShareIt';
+import ContactUs from '../../components/ContactUs'
+import Privacy from '../../components/Privacy';
 
 const Drawer = createDrawerNavigator();
 
-
 const DrawerNavig = () => {
     return (
-        <Drawer.Navigator>
-            <Drawer.Screen name='Patienthome' component={Patienthome} />
+        <Drawer.Navigator drawerContent={(props) => <CustomDrawer {...props} />}
+            screenOptions={{
+                drawerActiveBackgroundColor: "#381290", drawerActiveTintColor: "white", drawerInactiveTintColor: '#333', drawerLabelStyle: { fontSize: 15 }
+            }}>
+            <Drawer.Screen name='Patient Home' component={Patienthome} screenOptions={{
+                drawerIcon: () => {
+                    <MaterialIcons name="supervisor-account" size={22} />
+                },
+            }} />
             <Drawer.Screen name='PMyProfile' component={PMyProfile} />
+            <Drawer.Screen name='Edit Profile' component={EditProfile} />
+            <Drawer.Screen name='Share' component={ShareIt} />
+            <Drawer.Screen name='Contact Us' component={ContactUs} />
+            <Drawer.Screen name='Privacy Policy' component={Privacy} />
+
         </Drawer.Navigator>
     )
 }
