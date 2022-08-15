@@ -1,4 +1,4 @@
-import { StyleSheet, Text, View, StatusBar, Image, TextInput, TouchableOpacity } from 'react-native'
+import { Animated, BottomSheet, StyleSheet, ImageBackground, Text, View, StatusBar, Image, TextInput, TouchableOpacity } from 'react-native'
 import React, { useState } from 'react'
 
 import Icon from 'react-native-vector-icons/FontAwesome'
@@ -6,10 +6,58 @@ import { Colors } from '../../constants'
 import Buttons from '../../components/Buttons'
 import { ScrollView } from 'react-native-gesture-handler'
 
+// const popuplist = [
+//     {
+//         id: 1,
+//         name: 'task'
+//     },
+//     {
+//         id: 2,
+//         name: 'ok'
+//     },
+//     {
+//         id: 3,
+//         name: 'mast'
+//     },
+// ]
 
 
 
 const LabReport = ({ navigation }) => {
+
+
+    // let popupRef = React.createRef()
+    // const onShowPopup = () => {
+    //     popupRef.show()
+    // }
+
+    // const onclosePopup = () => {
+    //     popupRef.close()
+    // }
+
+
+    // const renderInner = () => (
+    //     <Text>Hello</Text>
+    // )
+    // const renderHeader = () => (
+    //     <View style={styles.header}>
+    //         <View style={styles.panelHeader}>
+    //             <View style={styles.panelHandle}>
+    //             </View>
+    //         </View>
+    //     </View>
+    // );
+
+    // const bs = React.createRef();
+    // const fall = new Animated.Value(1);
+
+
+
+
+
+
+
+
 
     const [formData, setformData] = useState({
         email: '',
@@ -41,7 +89,7 @@ const LabReport = ({ navigation }) => {
                     }}>
 
                         <TextInput onChangeText={(text) => { setformData((prevState) => ({ ...prevState, regnumber: text })) }}
-                            style={styles.input} placeholder="Reg. Number" secureTextEntry={true} placeholderTextColor={"#381290"} />
+                            style={styles.input} placeholder="Reg. Number" placeholderTextColor={"#381290"} />
                     </View>
 
                     <View style={{
@@ -50,7 +98,7 @@ const LabReport = ({ navigation }) => {
                     }}>
 
                         <TextInput onChangeText={(text) => { setformData((prevState) => ({ ...prevState, email: text })) }}
-                            style={styles.input} placeholder="Email" secureTextEntry={true} placeholderTextColor={"#381290"} />
+                            style={styles.input} placeholder="Email" placeholderTextColor={"#381290"} />
                     </View>
 
                     <View style={{
@@ -59,7 +107,7 @@ const LabReport = ({ navigation }) => {
                     }}>
 
                         <TextInput onChangeText={(text) => { setformData((prevState) => ({ ...prevState, mobile: text })) }}
-                            style={styles.input} placeholder="Mobile" secureTextEntry={true} placeholderTextColor={"#381290"} />
+                            style={styles.input} placeholder="Mobile" placeholderTextColor={"#381290"} />
                     </View>
 
 
@@ -69,13 +117,13 @@ const LabReport = ({ navigation }) => {
                     }}>
 
                         <TextInput onChangeText={(text) => { setformData((prevState) => ({ ...prevState, country: text })) }}
-                            style={styles.input} placeholder="Country" secureTextEntry={true} placeholderTextColor={"#381290"} />
+                            style={styles.input} placeholder="City" placeholderTextColor={"#381290"} />
                     </View>
 
 
                     <View style={{
                         flexDirection: 'row', backgroundColor: '#ededed', width: '98%',
-                        borderRadius: 10, height: 100, marginTop: 10, marginBottom: 80
+                        borderRadius: 10, height: 100, marginTop: 10, marginBottom: 40
                     }}>
 
                         <TextInput onChangeText={(text) => { setformData((prevState) => ({ ...prevState, problem: text })) }}
@@ -83,7 +131,53 @@ const LabReport = ({ navigation }) => {
                     </View>
 
 
-                    <Buttons btn_text={"Book Appointment"} on_press={() => console.log({ formData })} />
+
+                    {/* <BottomSheet
+                        ref={bs}
+                        snapPoints={[330, 0]}
+                        renderContent={renderInner}
+                        renderHeader={renderHeader}
+                        initialSnap={1}
+                        callbackNode={fall}
+                        enabledGestureInteraction={true} /> */}
+
+
+                    {/* <View style={{ alignItems: 'center' }}>
+                        <TouchableOpacity title="Demo PopUp" ref={(target) => popupRef = target} onPress={onShowPopup} onTouchOutside={onclosePopup} data={popuplist}>
+                            <View style={{
+                                height: 100,
+                                width: 100,
+                                borderRadius: 15,
+                                justifyContent: 'center',
+                                alignItems: 'center'
+                            }}> */}
+                    <ImageBackground
+                        source={require('../../assets/images/faisal.jpg')} style={{ width: 100, height: 100, alignSelf: 'center', marginBottom: 20 }} imageStyle={{ borderRadius: 15 }} >
+                        <View style={{
+                            flex: 1,
+                            justifyContent: 'center',
+                            alignItems: 'center'
+                        }}>
+                            <Icon name="camera" size={35} color='#fff' style={{
+                                opacity: 0.7,
+                                alignItems: 'center',
+                                justifyContent: 'center',
+                                borderWidth: 1,
+                                borderColor: '#fff',
+                                borderRadius: 10,
+                            }} />
+                        </View>
+                    </ImageBackground>
+                    {/* </View>
+                        </TouchableOpacity>
+                        <Text style={{ marginTop: 10, fontSize: 18, fontWeight: 'bold' }}>Mr.Faisal
+                        </Text>
+                    </View> */}
+
+
+
+
+                    <Buttons btn_text={"Submit Report"} on_press={() => console.log({ formData })} />
 
                 </View>
 
@@ -105,7 +199,7 @@ const styles = StyleSheet.create({
         width: '90%',
         fontFamily: 'OpenSans-Medium',
         paddingLeft: 20,
-
+        color: '#381290'
     },
     social_btn: {
         height: 55,
@@ -122,5 +216,29 @@ const styles = StyleSheet.create({
         width: 30,
         height: 30,
         marginLeft: 40
-    }
+    },
+    header: {
+        backgroundColor: '#FFFFFF',
+        shadowColor: '#333333',
+        shadowOffset: { width: -1, height: -3 },
+        shadowRadius: 2,
+        shadowOpacity: 0.4,
+        // elevation: 5,
+        paddingTop: 20,
+        borderTopLeftRadius: 20,
+        borderTopRightRadius: 20,
+    },
+    panelHeader: {
+        alignItems: 'center',
+    },
+    panelHandle: {
+        width: 40,
+        height: 8,
+        borderRadius: 4,
+        backgroundColor: '#00000040',
+        marginBottom: 10,
+    },
+
+
+
 })

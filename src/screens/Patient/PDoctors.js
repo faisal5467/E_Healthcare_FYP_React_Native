@@ -50,7 +50,7 @@ const PDoctors = ({ navigation }) => {
                                     </View>
                                 </View>
                                 <Text style={{ fontSize: 15, paddingTop: 15, paddingLeft: 15, paddingBottom: 20, color: '#525157' }} >{item.position}</Text>
-                                <TouchableOpacity onPress={() => navigation.navigate("LabReport")} style={styles.btnstyle}
+                                <TouchableOpacity onPress={() => navigation.navigate("BookAppointment")} style={styles.btnstyle}
                                 >
                                     <Text style={{ color: 'white', textAlign: 'center', fontSize: 20 }}> Book Appointment</Text>
                                 </TouchableOpacity>

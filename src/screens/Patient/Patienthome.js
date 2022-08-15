@@ -7,13 +7,13 @@ import MaterialIcons from 'react-native-vector-icons/MaterialIcons'
 export default function Patienthome({ navigation }) {
     const [items] = React.useState([
         { name: 'Doctors', code: '#D1CDDD', image: require("../../assets/images/doctor.png"), linking: ("PDoctors") },
-        { name: 'Apppointment', code: '#D1CDDD', image: require("../../assets/images/patient.png"), linking: ("BookAppointment") },
+        { name: 'Apppointment', code: '#D1CDDD', image: require("../../assets/images/patient.png"), linking: ("ViewAppointment") },
         { name: 'Prescription', code: '#D1CDDD', image: require("../../assets/images/pres1.png"), linking: ("Prescription") },
-        { name: 'LabReport', code: '#D1CDDD', image: require("../../assets/images/lab.png"), linking: ("LabReport") },
-        { name: 'PatientHistory', code: '#D1CDDD', image: require("../../assets/images/phistory.png"), linking: ("PHistory") },
+        { name: 'Lab Report', code: '#D1CDDD', image: require("../../assets/images/lab.png"), linking: ("LabReport") },
+        { name: 'Patient History', code: '#D1CDDD', image: require("../../assets/images/phistory.png"), linking: ("PHistory") },
         //{ name: 'View Schedule', code: '#D1CDDD', image: require("../../assets/images/shedule.png") },
         //{ name: 'View Appointment', code: '#D1CDDD', image: require("../../assets/images/view.png") },
-        { name: 'PHelp', code: '#D1CDDD', image: require("../../assets/images/help.png"), linking: ("PHelp") },
+        { name: 'Help', code: '#D1CDDD', image: require("../../assets/images/help.png"), linking: ("PHelp") },
 
     ])
 

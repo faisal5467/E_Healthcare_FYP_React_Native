@@ -51,7 +51,7 @@ const Login = ({ navigation }) => {
                         </TouchableOpacity>
                     </View>
 
-                    <Buttons btn_text={"Sign In"} on_press={() => navigation.navigate("PHelp")} />
+                    <Buttons btn_text={"Sign In"} on_press={() => navigation.navigate("Patienthome")} />
 
                 </View>
 
@@ -84,7 +84,7 @@ const Login = ({ navigation }) => {
 
                 <View style={{
                     flex: 1, flexDirection: 'row', justifyContent: 'center',
-                    alignItems: 'flex-end', backgroundColor: "#fff", marginBottom: 40
+                    alignItems: 'flex-end', backgroundColor: "#fff", marginBottom: 80
                 }}>
                     <Text style={{ fontFamily: 'OpenSans-Medium', marginTop: 50, fontSize: 20, color: '#2C3E50' }}>Don't have a account?</Text>
                     <TouchableOpacity onPress={() => navigation.navigate("Optionalpd")}>
