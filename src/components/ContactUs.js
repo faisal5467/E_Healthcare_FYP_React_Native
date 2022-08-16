@@ -5,19 +5,19 @@ import MaterialIcons from 'react-native-vector-icons/MaterialIcons'
 
 const ContactUs = ({ navigation }) => {
     return (
-        <SafeAreaView style={{ flex: 1, backgroundColor: 'white', borderWidth: 3, borderColor: '#381290', borderRadius: 20, width: '96%', marginLeft: '2%', }}>
+        <SafeAreaView style={{ flex: 1, backgroundColor: '#EAF5F0', borderWidth: 1, borderColor: '#381290', borderRadius: 12, width: '96%', marginLeft: '2%', }}>
 
-            <View style={{ flex: .5, backgroundColor: 'white', borderTopLeftRadius: 20, borderTopRightRadius: 20 }}>
+            <View style={{ flex: .5, backgroundColor: 'white', borderTopLeftRadius: 12, borderTopRightRadius: 20 }}>
                 <Image source={require('../assets/images/contact1.webp')} style={{ height: 200, width: '100%', borderTopLeftRadius: 10, borderTopRightRadius: 10 }} />
             </View>
 
-            <View style={{ flex: .2, backgroundColor: 'white', paddingHorizontal: 20, paddingVertical: 20, }}>
+            <View style={{ flex: .2, backgroundColor: '#EAF5F0', paddingHorizontal: 20, paddingVertical: 20, }}>
                 <Text style={{ fontSize: 20, color: '#333', textAlign: 'center' }}>If you have any any Question then you can Contact with Us on these Number  </Text>
             </View>
 
 
-            <View style={{ flex: 1, backgroundColor: '#EAF5F0', borderWidth: 3, borderColor: '#381290', borderRadius: 20, width: '80%', marginLeft: '10%', }}>
-                <View style={{ flex: .18, backgroundColor: '#EAF5F0', borderTopLeftRadius: 20, borderTopRightRadius: 20 }}>
+            <View style={{ flex: 1, backgroundColor: 'white', borderWidth: 3, borderColor: '#381290', borderRadius: 20, width: '80%', marginLeft: '10%', }}>
+                <View style={{ flex: .18, backgroundColor: 'white', borderTopLeftRadius: 20, borderTopRightRadius: 20 }}>
                     <Text style={{ fontSize: 30, textAlign: "center", color: '#381290' }}>  Medical Centre IIUI  </Text>
                 </View>
 

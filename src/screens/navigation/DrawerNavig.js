@@ -23,7 +23,7 @@ const DrawerNavig = () => {
                     <MaterialIcons name="supervisor-account" size={22} />
                 },
             }} />
-            <Drawer.Screen name='PMyProfile' component={PMyProfile} />
+
             <Drawer.Screen name='Edit Profile' component={EditProfile} />
             <Drawer.Screen name='Share' component={ShareIt} />
             <Drawer.Screen name='Contact Us' component={ContactUs} />

@@ -26,8 +26,14 @@ const CustomDrawer = (props) => {
             <View style={{ marginBottom: 50 }}>
                 <TouchableOpacity onPress={() => { }} style={{ paddingVertical: 15 }}>
                     <View style={{ flexDirection: "row", alignItems: 'center' }}>
-                        <MaterialIcons name="logout" size={25} style={{ marginLeft: 10 }} />
-                        <Text style={{ marginLeft: 5, fontSize: 20, color: "#333" }}>Logout</Text>
+                        <MaterialIcons name="share" size={23} style={{ marginLeft: 10 }} />
+                        <Text style={{ marginLeft: 5, fontSize: 18, color: "#333" }}>Share</Text>
+                    </View>
+                </TouchableOpacity>
+                <TouchableOpacity onPress={() => { }} style={{ paddingVertical: 15 }}>
+                    <View style={{ flexDirection: "row", alignItems: 'center' }}>
+                        <MaterialIcons name="logout" size={23} style={{ marginLeft: 10 }} />
+                        <Text style={{ marginLeft: 5, fontSize: 18, color: "#333" }}>Logout</Text>
                     </View>
                 </TouchableOpacity>
             </View >

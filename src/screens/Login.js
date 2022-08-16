@@ -51,7 +51,7 @@ const Login = ({ navigation }) => {
                         </TouchableOpacity>
                     </View>
 
-                    <Buttons btn_text={"Sign In"} on_press={() => navigation.navigate("Patienthome")} />
+                    <Buttons btn_text={"Sign In"} on_press={() => navigation.navigate("DrawerNavig")} />
 
                 </View>
 

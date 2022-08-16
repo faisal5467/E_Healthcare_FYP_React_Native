@@ -22,6 +22,8 @@ import Profile from '../../components/Profile';
 import DoctorHome from '../Doctor/DoctorHome';
 import Privacy from '../../components/Privacy';
 import ContactUs from '../../components/ContactUs';
+import PharmacyHome from '../pharmacy/PharmacyHome';
+import DoctorDrawer from '../Doctor/DoctorDrawer';
 
 
 
@@ -48,10 +50,12 @@ const MainStackNavigator = () => {
             <Stack.Screen name="PMyProfile" component={PMyProfile} options={{ title: 'My Profile', headerBackVisible: false, headerTitleStyle: { fontWeight: "bold", fontSize: 28, color: '#fff' }, headerStyle: { backgroundColor: '#381290' } }} />
             <Stack.Screen name="TextScreen" component={TextScreen} options={{ headerShown: false }} />
             <Stack.Screen name="Profile" component={Profile} options={{ title: 'My Profile', headerBackVisible: false, headerTitleStyle: { fontWeight: "bold", fontSize: 28, color: '#fff' }, headerStyle: { backgroundColor: '#381290' } }} />
-            <Stack.Screen name="DoctorHome" component={DoctorHome} options={{ title: 'My Doctors', headerTitleAlign: 'center', headerTitleStyle: { fontWeight: "bold", fontSize: 28, color: '#381290' } }} />
+            <Stack.Screen name="DoctorHome" component={DoctorHome} options={{ title: 'Healthcare', headerBackVisible: false, headerTitleAlign: 'center', headerTitleStyle: { fontWeight: "bold", fontSize: 28, color: '#381290' } }} />
             <Stack.Screen name="Privacy" component={Privacy} options={{ title: 'Healthcare', headerTitleAlign: 'center', headerTitleStyle: { fontWeight: "bold", fontSize: 28, color: '#381290' } }} />
             <Stack.Screen name="ContactUs" component={ContactUs} options={{ title: 'Healthcare', headerTitleAlign: 'center', headerTitleStyle: { fontWeight: "bold", fontSize: 28, color: '#381290' } }} />
-
+            <Stack.Screen name="PharmacyHome" component={PharmacyHome} options={{ headerShown: false }} />
+            <Stack.Screen name="DoctorDrawer" component={DoctorDrawer} options={{ headerShown: false }} />
+            <Stack.Screen name="DrawerNavig" component={DrawerNavig} options={{ headerShown: false }} />
         </Stack.Navigator>
 
 

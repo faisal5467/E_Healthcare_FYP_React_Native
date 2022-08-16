@@ -1,5 +1,4 @@
 import { Image, StatusBar, SafeAreaView, StyleSheet, Text, TouchableOpacity, View, FlatList } from 'react-native';
-
 import React from 'react';
 import { FlatGrid } from 'react-native-super-grid';
 import PHomeFlatList from '../Patient/PHomeFlatList';
@@ -7,16 +6,17 @@ import MaterialIcons from 'react-native-vector-icons/MaterialIcons'
 
 
 
+
 export default function DoctorHome({ navigation }) {
     const [items, setItems] = React.useState([
-        { name: 'Patients', code: '#D1CDDD', image: require("../../assets/images/doctor.png") },
-        { name: 'Apppointment', code: '#D1CDDD', image: require("../../assets/images/patient.png") },
-        { name: 'Prescription', code: '#D1CDDD', image: require("../../assets/images/pres1.png") },
-        { name: 'Lab Report', code: '#D1CDDD', image: require("../../assets/images/lab.png") },
-        { name: 'Patient History', code: '#D1CDDD', image: require("../../assets/images/phistory.png") },
+        // { name: 'Patients', code: '#D1CDDD', image: require("../../assets/images/doctor.png") },
+        { name: 'Apppointment', code: '#D1CDDD', image: require("../../assets/images/patient.png"), linking: ("ViewAppointment") },
+        { name: 'Prescription', code: '#D1CDDD', image: require("../../assets/images/pres1.png"), linking: ("Prescription") },
+        { name: 'Lab Report', code: '#D1CDDD', image: require("../../assets/images/lab.png"), linking: ("LabReport") },
+        { name: 'Patient History', code: '#D1CDDD', image: require("../../assets/images/phistory.png"), linking: ("PHistory") },
         //{ name: 'View Schedule', code: '#D1CDDD', image: require("../../assets/images/shedule.png") },
         //{ name: 'View Appointment', code: '#D1CDDD', image: require("../../assets/images/view.png") },
-        { name: 'Help', code: '#D1CDDD', image: require("../../assets/images/help.png") },
+        // { name: 'Help', code: '#D1CDDD', image: require("../../assets/images/help.png") },
 
     ])
 
@@ -48,17 +48,19 @@ export default function DoctorHome({ navigation }) {
 
 
         <View style={{ flex: 1, backgroundColor: '#fff' }}>
-            <StatusBar StatusBar="dark-content" backgroundColor='#381290' />
+            <StatusBar StatusBar="dark-content" backgroundColor='#3704c2' />
 
+            {/* 
+          
 
             {/* new menw bana raha  */}
-
+            {/* 
             <View style={{ flex: .2, position: 'relative', backgroundColor: 'yellow', borderRadius: 10 }}>
                 <TouchableOpacity onPress={() => navigation.navigate("Profile")} style={{ flex: 1, flexDirection: 'row', backgroundColor: 'gray', width: '10%', marginLeft: 7 }}>
                     <MaterialIcons name="menu" color='black' size={40} />
                 </TouchableOpacity>
             </View>
-
+ */}
 
 
 
@@ -80,7 +82,7 @@ export default function DoctorHome({ navigation }) {
                     // fixed
                     spacing={20}
                     renderItem={({ item }) => (
-                        <TouchableOpacity style={[styles.itemContainer, { backgroundColor: item.code }]}>
+                        <TouchableOpacity onPress={() => navigation.navigate(item.linking)} style={[styles.itemContainer, { backgroundColor: item.code }]}>
                             <Image style={styles.img_design} source={item.image} />
                             <Text style={styles.itemName}>{item.name}</Text>
                             {/*<Text style={styles.itemCode}>{item.code}</Text>}*/}

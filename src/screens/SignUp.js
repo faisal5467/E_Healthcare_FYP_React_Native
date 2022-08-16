@@ -18,7 +18,7 @@ const SignUp = ({ navigation }) => {
 
     return (
         <ScrollView style={{ flex: 1, backgroundColor: '#fff', flexDirection: 'column' }}>
-            <StatusBar StatusBar="dark-content" backgroundColor="#381290" />
+            <StatusBar StatusBar="dark-content" backgroundColor="#3704c2" />
             {/* Login from section */}
             <View style={{ flex: 3, flexDirection: 'column', paddingTop: 20, backgroundColor: '#fff', paddingHorizontal: '5%' }}>
 

@@ -45,7 +45,7 @@ export default function Patienthome({ navigation }) {
 
 
         <View style={{ flex: 1, backgroundColor: '#fff' }}>
-            <StatusBar StatusBar="dark-content" backgroundColor='#381290' />
+            <StatusBar StatusBar="dark-content" backgroundColor='#3704c2' />
 
 
             {/* new menw bana raha  */}
