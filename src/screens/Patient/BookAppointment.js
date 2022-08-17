@@ -105,6 +105,8 @@ const styles = StyleSheet.create({
         width: '90%',
         fontFamily: 'OpenSans-Medium',
         paddingLeft: 20,
+        color: '#381290',
+
 
     },
     social_btn: {

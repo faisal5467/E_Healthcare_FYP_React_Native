@@ -4,6 +4,7 @@ import { DrawerContentScrollView, DrawerItemList } from '@react-navigation/drawe
 import MaterialIcons from 'react-native-vector-icons/MaterialIcons'
 
 const CustomDrawer = (props) => {
+    console.log(props)
     return (
         <View style={{ flex: 1 }}>
             <DrawerContentScrollView {...props}
@@ -30,7 +31,7 @@ const CustomDrawer = (props) => {
                         <Text style={{ marginLeft: 5, fontSize: 18, color: "#333" }}>Share</Text>
                     </View>
                 </TouchableOpacity>
-                <TouchableOpacity onPress={() => { }} style={{ paddingVertical: 15 }}>
+                <TouchableOpacity onPress={() => props.navigation.navigate("Login")} style={{ paddingVertical: 15 }}>
                     <View style={{ flexDirection: "row", alignItems: 'center' }}>
                         <MaterialIcons name="logout" size={23} style={{ marginLeft: 10, color: '#381290' }} />
                         <Text style={{ marginLeft: 5, fontSize: 18, color: "#333" }}>Logout</Text>
