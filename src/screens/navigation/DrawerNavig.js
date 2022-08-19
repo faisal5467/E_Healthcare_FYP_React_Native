@@ -3,10 +3,8 @@ import React from 'react'
 import { createDrawerNavigator } from '@react-navigation/drawer'
 import CustomDrawer from '../../components/CustomDrawer';
 import MaterialIcons from 'react-native-vector-icons/MaterialIcons'
-import PMyProfile from '../Patient/PMyProfile';
 import Patienthome from '../Patient/Patienthome';
 import EditProfile from '../Patient/EditProfile';
-import ShareIt from '../../components/ShareIt';
 import ContactUs from '../../components/ContactUs'
 import Privacy from '../../components/Privacy';
 
@@ -25,7 +23,7 @@ const DrawerNavig = () => {
             }} />
 
             <Drawer.Screen name='Edit Profile' component={EditProfile} />
-            <Drawer.Screen name='Share' component={ShareIt} />
+
             <Drawer.Screen name='Contact Us' component={ContactUs} />
             <Drawer.Screen name='Privacy Policy' component={Privacy} />
 

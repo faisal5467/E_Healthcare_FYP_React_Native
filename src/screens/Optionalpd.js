@@ -26,7 +26,7 @@ const Optionalpd = ({ navigation }) => {
 
 
 
-            <View style={{ flex: 0.9, flexDirection: 'column', backgroundColor: '#fff' }}>
+            <ScrollView style={{ flex: 0.9, flexDirection: 'column', backgroundColor: '#fff' }}>
                 <View style={{ flexDirection: 'column', alignItems: 'center', width: '95%' }}>
                     <TouchableOpacity onPress={() => navigation.navigate("SignUp")} style={styles.social_btn}>
                         <Image style={styles.social_img} source=
@@ -55,7 +55,7 @@ const Optionalpd = ({ navigation }) => {
                         }}> Pharmacy </Text>
                     </TouchableOpacity>
                 </View>
-            </View>
+            </ScrollView>
         </View>
     )
 }

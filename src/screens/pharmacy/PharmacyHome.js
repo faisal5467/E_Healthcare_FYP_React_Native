@@ -2,7 +2,7 @@ import * as React from 'react';
 import { Button, View, StyleSheet } from 'react-native';
 import { createDrawerNavigator } from '@react-navigation/drawer';
 import PharmEditProfile from './PharmEditProfile';
-import ShareIt from '../../components/ShareIt';
+
 import ContactUs from '../../components/ContactUs';
 import Privacy from '../../components/Privacy';
 import Prescription from '../Patient/Prescription';
@@ -43,7 +43,6 @@ const PharmacyHome = () => {
             <Drawer.Screen name="Notifications" component={NotificationsScreen} /> */}
             <Drawer.Screen name='Prescription' component={Prescription} />
             <Drawer.Screen name='Edit Profile' component={PharmEditProfile} />
-            <Drawer.Screen name='Share' component={ShareIt} />
             <Drawer.Screen name='Contact Us' component={ContactUs} />
             <Drawer.Screen name='Privacy Policy' component={Privacy} />
         </Drawer.Navigator>

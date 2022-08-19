@@ -5,7 +5,8 @@ import Profile from '../../components/Profile'
 const DEditProfile = () => {
     return (
         <View>
-            <Profile />
+            <Text>afdf</Text>
+            {/* <Profile /> */}
         </View>
     )
 }

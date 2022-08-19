@@ -1,6 +1,5 @@
-import { StyleSheet, Text, View, TouchableOpacity, ImageBackground, TextInput } from 'react-native'
 import React from 'react'
-
+import { StyleSheet, Text, View, TouchableOpacity, ImageBackground, TextInput, ToastAndroid, Alert, TouchableHighlight } from 'react-native'
 import Icon from 'react-native-vector-icons/FontAwesome'
 import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons'
 import Feather from 'react-native-vector-icons/Feather'
@@ -8,77 +7,93 @@ import FontAwesome from 'react-native-vector-icons/FontAwesome'
 import Fontisto from 'react-native-vector-icons/Fontisto'
 import Entypo from 'react-native-vector-icons/Entypo'
 import { ScrollView } from 'react-native-gesture-handler'
-import Animated, { Value } from 'react-native-reanimated'
-import Bottomsheet from '../../components/Bottomsheet'
-import { NavigationContainer } from '@react-navigation/native';
-import { createNativeStackNavigator } from '@react-navigation/native-stack';
+import { launchImageLibrary } from 'react-native-image-picker'
+import { Avator, Button } from 'react-native-paper'
 
 
-const popuplist = [
-    {
-        id: 1,
-        name: 'task'
-    },
-    {
-        id: 2,
-        name: 'ok'
-    },
-    {
-        id: 3,
-        name: 'mast'
-    },
-]
+
+
 const EditProfile = ({ navigation }) => {
 
-    let popupRef = React.createRef()
-    const onShowPopup = () => {
-        popupRef.show()
-    }
+    // const [Pic, SetPic] = React.useState('');
+    // // for show toast msg
+    // const setToastMsg = msg => {
+    //     ToastAndroid, showWithGravity(msg, ToastAndroid.SHORT, ToastAndroid.CENTER);
+    // };
 
-    const onclosePopup = () => {
-        popupRef.close()
-    }
+    // const uploadImage = () => {
+    //     let options = {
+    //         mediaType: 'photo',
+    //         quality: 1,
+    //         includeBase64: true,
+    //     };
+    //     launchImageLibrary(options, response => {
+    //         if (response.didCancel) {
+    //             setToastMsg('Cancelled Image selection')
+    //         }
+    //         else if (response.errorCode == 'permission') {
+    //             setToastMsg('permission not satisfied')
+    //         }
+    //         else if (response.errorCode == 'others') {
+    //             setToastMsg(response.errorMessage);
+    //         }
+    //         else if (response.assets[0].fileSize > 2097152) {
+    //             Alert.alert('Maximum image size exceeded', 'Please choose image under 2MB', [{ text: 'OK' }],
+    //             );
+    //         }
+    //         else {
+    //             SetPic()(response.assets[0].base64);
+    //         }
+    //     });
 
 
+    // };
 
-
-    // pehly ka hai ye.....const renderInner = () => (
-    //     <Text>Hello</Text>
-    // )
-    // const renderHeader = () => (
-    //     <View style={styles.header}>
-    //         <View style={styles.panelHeader}>
-    //             <View style={styles.panelHandle}>
-    //             </View>
-    //         </View>
-    //     </View>
-    // );
-
-    // bs = React.createRef();
-    // fall = new Animated.Value(1);
 
 
 
     return (
         <ScrollView>
             <View style={styles.container}>
-                {/* <BottomSheet
-                    ref={this.bs}
-                    snapPoints={[330, 0]}
-                    renderContent={this.renderInner}
-                    renderHeader={this.renderHeader}
-                    initialSnap={1}
-                    callbackNode={this.fall}
-                    enabledGestureInteraction={true} /> */}
+
                 <View style={{ margin: 20 }}>
                     <View style={{ alignItems: 'center' }}>
-                        <TouchableOpacity title="Demo PopUp" ref={(target) => popupRef = target} onPress={onShowPopup} onTouchOutside={onclosePopup} data={popuplist}>
+
+                        {/* 
+                        <View>
+                            <TouchableHighlight>
+                                onPress={() => alert('pressed')}
+                                backgroundColor='yellow'
+
+                                <Avator.Image
+                                    size={50}
+                                    source={{ uri: 'data:image/png;base64' + Pic }} />
+                            </TouchableHighlight>
+                        </View>
+
+                        <View>
+                            <Button mode="contained" onPress={() => uploadImage()}>
+                                upload Image
+                            </Button>
+
+                            <Button mode="contained" onPress={() => uploadImage()}>
+                                Remove Image
+                            </Button>
+                        </View> */}
+
+
+
+
+
+
+                        <TouchableOpacity>
                             <View style={{
                                 height: 100,
                                 width: 100,
                                 borderRadius: 15,
                                 justifyContent: 'center',
-                                alignItems: 'center'
+                                alignItems: 'center',
+                                marginBottom: 40
                             }}>
                                 <ImageBackground
                                     source={require('../../assets/images/faisal.jpg')} style={{ width: 100, height: 100 }} imageStyle={{ borderRadius: 15 }} >
@@ -99,27 +114,19 @@ const EditProfile = ({ navigation }) => {
                                 </ImageBackground>
                             </View>
                         </TouchableOpacity>
-                        <Text style={{ marginTop: 10, fontSize: 18, fontWeight: 'bold' }}>Mr.Faisal
-                        </Text>
+
                     </View>
                     <View style={styles.action}>
-                        <MaterialCommunityIcons name="account-outline" size={20} style={{ paddingTop: 13 }} />
+                        <MaterialCommunityIcons name="account-outline" size={25} style={{ paddingTop: 13, color: '#381290' }} />
                         <TextInput
-                            placeholder="First Name"
+                            placeholder="Full Name"
                             placeholderTextColor='#666666'
                             autoCorrect={false}
                             style={styles.textInput} />
                     </View>
+
                     <View style={styles.action}>
-                        <MaterialCommunityIcons name="account-outline" size={20} style={{ paddingTop: 13 }} />
-                        <TextInput
-                            placeholder="Last Name"
-                            placeholderTextColor='#666666'
-                            autoCorrect={false}
-                            style={styles.textInput} />
-                    </View>
-                    <View style={styles.action}>
-                        <FontAwesome name="pencil-square" size={20} style={{ paddingTop: 13 }} />
+                        <FontAwesome name="pencil-square" size={25} style={{ paddingTop: 13, color: '#381290' }} />
                         <TextInput
                             placeholder="Registration Number"
                             placeholderTextColor='#666666'
@@ -127,7 +134,7 @@ const EditProfile = ({ navigation }) => {
                             style={styles.textInput} />
                     </View>
                     <View style={styles.action}>
-                        <FontAwesome name="envelope-o" size={20} style={{ paddingTop: 13 }} />
+                        <FontAwesome name="envelope-o" size={25} style={{ paddingTop: 13, color: '#381290' }} />
                         <TextInput
                             placeholder="Email"
                             placeholderTextColor='#666666'
@@ -136,7 +143,7 @@ const EditProfile = ({ navigation }) => {
                             style={styles.textInput} />
                     </View>
                     <View style={styles.action}>
-                        <Icon name="phone" size={20} style={{ paddingTop: 13 }} />
+                        <Icon name="phone" size={25} style={{ paddingTop: 13, color: '#381290' }} />
                         <TextInput
                             placeholder="Mobile No"
                             placeholderTextColor='#666666'
@@ -145,7 +152,7 @@ const EditProfile = ({ navigation }) => {
                             style={styles.textInput} />
                     </View>
                     <View style={styles.action}>
-                        <Entypo name="location" size={20} style={{ paddingTop: 13 }} />
+                        <Entypo name="location" size={25} style={{ paddingTop: 13, color: '#381290' }} />
                         <TextInput
                             placeholder="City"
                             placeholderTextColor='#666666'
@@ -153,7 +160,7 @@ const EditProfile = ({ navigation }) => {
                             style={styles.textInput} />
                     </View>
                     <View style={styles.action}>
-                        <Fontisto name="world-o" size={20} style={{ paddingTop: 13 }} />
+                        <Fontisto name="world-o" size={25} style={{ paddingTop: 13, color: '#381290' }} />
                         <TextInput
                             placeholder="Country"
                             placeholderTextColor='#666666'
@@ -161,7 +168,7 @@ const EditProfile = ({ navigation }) => {
                             style={styles.textInput} />
                     </View>
                     <TouchableOpacity style={styles.commandButton} onPress={() => { }}>
-                        <Text style={styles.panelButtonTitle}>Submit</Text>
+                        <Text style={styles.panelButtonTitle}>UpDate</Text>
                     </TouchableOpacity>
                 </View>
             </View>
@@ -180,7 +187,7 @@ const styles = StyleSheet.create({
         borderRadius: 10,
         backgroundColor: '#381290',
         alignItems: 'center',
-        marginTop: 10,
+        marginTop: 40,
     },
     panel: {
         padding: 20,
@@ -240,6 +247,7 @@ const styles = StyleSheet.create({
         flexDirection: 'row',
         borderBottomWidth: 1,
         borderBottomColor: '#D2D1D8',
+        marginTop: 5
 
     },
     actionError: {
@@ -251,7 +259,7 @@ const styles = StyleSheet.create({
     },
     textInput: {
 
-        paddingLeft: 10,
+        paddingLeft: 20,
         color: '#05375a',
     },
 });

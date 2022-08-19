@@ -4,7 +4,7 @@ import { DrawerContentScrollView, DrawerItemList } from '@react-navigation/drawe
 import MaterialIcons from 'react-native-vector-icons/MaterialIcons'
 
 const CustomDrawer = (props) => {
-    console.log(props)
+
     return (
         <View style={{ flex: 1 }}>
             <DrawerContentScrollView {...props}

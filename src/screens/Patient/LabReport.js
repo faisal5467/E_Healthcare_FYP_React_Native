@@ -1,69 +1,28 @@
 import { Animated, BottomSheet, StyleSheet, ImageBackground, Text, View, StatusBar, Image, TextInput, TouchableOpacity } from 'react-native'
 import React, { useState } from 'react'
-
 import Icon from 'react-native-vector-icons/FontAwesome'
 import { Colors } from '../../constants'
 import Buttons from '../../components/Buttons'
 import { ScrollView } from 'react-native-gesture-handler'
-
-// const popuplist = [
-//     {
-//         id: 1,
-//         name: 'task'
-//     },
-//     {
-//         id: 2,
-//         name: 'ok'
-//     },
-//     {
-//         id: 3,
-//         name: 'mast'
-//     },
-// ]
-
-
+import FormInput from '../../components/FormInput'
 
 const LabReport = ({ navigation }) => {
 
-
-    // let popupRef = React.createRef()
-    // const onShowPopup = () => {
-    //     popupRef.show()
-    // }
-
-    // const onclosePopup = () => {
-    //     popupRef.close()
-    // }
-
-
-    // const renderInner = () => (
-    //     <Text>Hello</Text>
-    // )
-    // const renderHeader = () => (
-    //     <View style={styles.header}>
-    //         <View style={styles.panelHeader}>
-    //             <View style={styles.panelHandle}>
-    //             </View>
-    //         </View>
-    //     </View>
-    // );
-
-    // const bs = React.createRef();
-    // const fall = new Animated.Value(1);
-
-
-
-
-
-
-
-
-
     const [formData, setformData] = useState({
         email: '',
-        password: ''
+        password: '',
+        name: '',
+        mobile: '',
+
     })
 
+    const [name, setName] = useState('');
+    const [regnumber, setReg] = useState('');
+    const [email, setEmail] = useState('');
+    const [mobile, setMobile] = useState('');
+    const [city, setCity] = useState('');
+    const [country, setCountry] = useState('');
+    const [problem, setProblem] = useState('');
 
     return (
         <ScrollView style={{ flex: 1, backgroundColor: '#fff', flexDirection: 'column' }}>
@@ -73,57 +32,62 @@ const LabReport = ({ navigation }) => {
 
                 {/* Firstbox */}
                 <View style={{ flexDirection: 'column', paddingLeft: 8 }}>
+                    <FormInput
+                        labelValue={name}
+                        onChangeText={(userName) => setName(userName)}
+                        placeholderText="Full Name"
+                        keyboardType="email-address"
+                        autoCapitalize="none"
+                        autoCorrect={false}
+                    />
+
+                    <FormInput
+                        labelValue={regnumber}
+                        onChangeText={(userReg) => setReg(userReg)}
+                        placeholderText="Reg. Number"
+                        autoCapitalize="none"
+                        autoCorrect={false}
+                    />
+
+                    <FormInput
+                        labelValue={email}
+                        onChangeText={(userEmail) => setEmail(userEmail)}
+                        placeholderText="Email"
+                        autoCapitalize="none"
+                        autoCorrect={false}
+                    />
+
+                    <FormInput
+                        labelValue={mobile}
+                        onChangeText={(userMobile) => setMobile(userMobile)}
+                        placeholderText="Mobile"
+                        autoCapitalize="none"
+                        autoCorrect={false}
+                    />
+
+                    <FormInput
+                        labelValue={city}
+                        onChangeText={(userCity) => setCity(userCity)}
+                        placeholderText="City"
+                        autoCapitalize="none"
+                        autoCorrect={false}
+                    />
+                    <FormInput
+                        labelValue={country}
+                        onChangeText={(userCountry) => setCountry(userCountry)}
+                        placeholderText="Country"
+                        autoCapitalize="none"
+                        autoCorrect={false}
+                    />
+
                     <View style={{
-                        flexDirection: 'row', backgroundColor: '#ededed', width: '98%',
-                        borderRadius: 10, height: 60, marginTop: 20
-                    }}>
-
-
-                        <TextInput onChangeText={(text) => { setformData((prevState) => ({ ...prevState, name: text })) }}
-                            style={styles.input} placeholder="Full Name" placeholderTextColor={"#381290"} />
-                    </View>
-
-                    <View style={{
-                        flexDirection: 'row', backgroundColor: '#ededed', width: '98%',
-                        borderRadius: 10, height: 60, marginTop: 10
-                    }}>
-
-                        <TextInput onChangeText={(text) => { setformData((prevState) => ({ ...prevState, regnumber: text })) }}
-                            style={styles.input} placeholder="Reg. Number" placeholderTextColor={"#381290"} />
-                    </View>
-
-                    <View style={{
-                        flexDirection: 'row', backgroundColor: '#ededed', width: '98%',
-                        borderRadius: 10, height: 60, marginTop: 10,
-                    }}>
-
-                        <TextInput onChangeText={(text) => { setformData((prevState) => ({ ...prevState, email: text })) }}
-                            style={styles.input} placeholder="Email" placeholderTextColor={"#381290"} />
-                    </View>
-
-                    <View style={{
-                        flexDirection: 'row', backgroundColor: '#ededed', width: '98%',
-                        borderRadius: 10, height: 60, marginTop: 10
-                    }}>
-
-                        <TextInput onChangeText={(text) => { setformData((prevState) => ({ ...prevState, mobile: text })) }}
-                            style={styles.input} placeholder="Mobile" placeholderTextColor={"#381290"} />
-                    </View>
-
-
-                    <View style={{
-                        flexDirection: 'row', backgroundColor: '#ededed', width: '98%',
-                        borderRadius: 10, height: 60, marginTop: 10,
-                    }}>
-
-                        <TextInput onChangeText={(text) => { setformData((prevState) => ({ ...prevState, country: text })) }}
-                            style={styles.input} placeholder="City" placeholderTextColor={"#381290"} />
-                    </View>
-
-
-                    <View style={{
-                        flexDirection: 'row', backgroundColor: '#ededed', width: '98%',
-                        borderRadius: 10, height: 100, marginTop: 10, marginBottom: 40
+                        flexDirection: 'row',
+                        backgroundColor: '#ededed',
+                        width: '98%',
+                        borderRadius: 10,
+                        height: 100,
+                        marginTop: 10,
+                        marginBottom: 40
                     }}>
 
                         <TextInput onChangeText={(text) => { setformData((prevState) => ({ ...prevState, problem: text })) }}

@@ -4,6 +4,7 @@ import { Colors } from '../../src/constants'
 import Icon from 'react-native-vector-icons/FontAwesome'
 import Buttons from '../components/Buttons'
 import { ScrollView } from 'react-native-gesture-handler'
+import FormInput from '../components/FormInput'
 
 const Login = ({ navigation }) => {
 
@@ -12,9 +13,10 @@ const Login = ({ navigation }) => {
         email: '',
         password: ''
     })
-
+    const [email, setEmail] = useState('');
+    const [password, setPassword] = useState('');
     return (
-        <ScrollView style={{ flex: 1, backgroundColor: '#381290', flexDirection: 'column' }}>
+        <ScrollView style={{ flex: 1, backgroundColor: '#fff', flexDirection: 'column' }}>
             <StatusBar StatusBar="dark-content" backgroundColor="#3704c2" />
             {/* Login from section */}
             <View style={{ flex: 3, flexDirection: 'column', backgroundColor: '#fff', paddingTop: 10, paddingHorizontal: '5%' }}>
@@ -22,28 +24,27 @@ const Login = ({ navigation }) => {
                     <Text style={{ fontSize: 30, color: Colors.black, paddingLeft: 80 }}>Welcome Back</Text>
                     <Image source={require('../assets/images/wave.png')} style={{ width: 25, height: 25 }} />
                 </View>
-                <Text style={{ fontSize: 15, color: "#777", paddingTop: 10, textAlign: 'center' }}>I am happy to see you again.It is health that is real wealth and not pieces of gold and silver.</Text>
+                <Text style={{ fontSize: 15, color: "#777", paddingTop: 10, textAlign: 'center', marginBottom: 30 }}>I am happy to see you again.It is health that is real wealth and not pieces of gold and silver.</Text>
 
                 {/* Firstbox */}
                 <View style={{ flexDirection: 'column', paddingLeft: 8 }}>
-                    <View style={{
-                        flexDirection: 'row', justifyContent: 'center',
-                        alignItems: 'center', backgroundColor: '#ededed', width: '98%',
-                        borderRadius: 10, height: 60, paddingLeft: 10, marginTop: 60, borderWidth: 1.2, borderColor: '#381290'
-                    }}>
-                        <Icon name="envelope-o" size={20} color="#381290" />
-                        <TextInput onChangeText={(text) => { setformData((prevState) => ({ ...prevState, email: text })) }} style={styles.input} placeholder="Please Enter Email" placeholderTextColor={"#381290"} />
-                    </View>
+                    <FormInput
+                        labelValue={email}
+                        onChangeText={(userEmail) => setEmail(userEmail)}
+                        placeholderText="Email"
+                        iconType="envelope-o"
+                        keyboardType="email-address"
+                        autoCapitalize="none"
+                        autoCorrect={false}
+                    />
 
-                    <View style={{
-                        flexDirection: 'row', justifyContent: 'center',
-                        alignItems: 'center', backgroundColor: '#ededed', width: '98%',
-                        borderRadius: 10, height: 60, paddingLeft: 10, marginTop: 15, borderWidth: 1.2, borderColor: '#381290'
-                    }}>
-                        <Icon name="lock" size={20} color="#381290" />
-                        <TextInput onChangeText={(text) => { setformData((prevState) => ({ ...prevState, password: text })) }}
-                            style={styles.input} placeholder="Please Enter Password" secureTextEntry={true} placeholderTextColor={"#381290"} />
-                    </View>
+                    <FormInput
+                        labelValue={password}
+                        onChangeText={(userPassword) => setPassword(userPassword)}
+                        placeholderText="password"
+                        iconType="lock"
+                        secureTextEntry={true}
+                    />
 
                     <View style={{ width: '95%', marginBottom: 35 }}>
                         <TouchableOpacity>
@@ -72,14 +73,6 @@ const Login = ({ navigation }) => {
                             fontWeight: 'bold', fontSize: 20, fontFamily: 'OpenSans-Medium', color: '#273746'
                         }}> Sign In with Google </Text>
                     </TouchableOpacity>
-                    {/* <TouchableOpacity onPress={() => console.log("facebook login")} style={styles.social_btn}>
-                        <Image style={styles.social_img} source=
-                            {require('../assets/images/facebook.png')} />
-                        <Text style={{
-                            width: '80%', paddingRight: 50, textAlign: 'center',
-                            fontWeight: 'bold', fontSize: 20, fontFamily: 'OpenSans-Medium', color: '#273746'
-                        }}> Sign In with Facebook </Text>
-                    </TouchableOpacity> */}
                 </View>
 
                 <View style={{
@@ -92,7 +85,6 @@ const Login = ({ navigation }) => {
                     </TouchableOpacity>
 
                 </View>
-
             </View>
         </ScrollView >
     )
@@ -101,14 +93,7 @@ const Login = ({ navigation }) => {
 export default Login
 
 const styles = StyleSheet.create({
-    input: {
-        position: 'relative',
-        height: '100%',
-        width: '90%',
-        fontFamily: 'OpenSans-Medium',
-        paddingLeft: 20,
-        color: 'black'
-    },
+
     social_btn: {
         height: 55,
         width: '92%',
