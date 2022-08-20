@@ -1,9 +1,11 @@
 import { StyleSheet, Text, View, StatusBar, Image, TextInput, TouchableOpacity } from 'react-native'
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 import { Colors } from '../../src/constants'
+import auth from '@react-native-firebase/auth';
 import Icon from 'react-native-vector-icons/FontAwesome'
 import Buttons from '../components/Buttons'
 import { ScrollView } from 'react-native-gesture-handler'
+
 import FormInput from '../components/FormInput'
 
 const Login = ({ navigation }) => {
@@ -15,6 +17,29 @@ const Login = ({ navigation }) => {
     })
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
+
+
+
+
+    const handlerSignIn = () => {
+        auth()
+            .signInWithEmailAndPassword(email, password)
+            .then(() => {
+                console.log('User signed in!');
+                navigation.navigate("DrawerNavig")
+            })
+            .catch(error => {
+                if (error.code === 'auth/email-already-in-use') {
+                    console.log('That email address is already in use!');
+                }
+
+                if (error.code === 'auth/invalid-email') {
+                    console.log('That email address is invalid!');
+                }
+
+                console.error(error);
+            });
+    }
     return (
         <ScrollView style={{ flex: 1, backgroundColor: '#fff', flexDirection: 'column' }}>
             <StatusBar StatusBar="dark-content" backgroundColor="#3704c2" />
@@ -52,7 +77,7 @@ const Login = ({ navigation }) => {
                         </TouchableOpacity>
                     </View>
 
-                    <Buttons btn_text={"Sign In"} on_press={() => navigation.navigate("DrawerNavig")} />
+                    <Buttons btn_text={"Sign In"} on_press={() => handlerSignIn()} />
 
                 </View>
 

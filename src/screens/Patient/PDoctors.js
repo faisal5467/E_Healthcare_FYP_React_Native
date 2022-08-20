@@ -1,13 +1,29 @@
 import { StyleSheet, Text, Button, View, Image, FlatList, SafeAreaView, StatusBar, TouchableOpacity } from 'react-native'
-import React, { Component } from 'react'
+import React, { Component, useEffect, useState } from 'react'
 import { ScrollView } from 'react-native'
 import { Colors } from '../../constants'
 import DoctorFlatList from './DoctorFlatList'
 import Buttons from '../../components/Buttons'
 
-
+import firestore from '@react-native-firebase/firestore';
 
 const PDoctors = ({ navigation }) => {
+    const [data, fireData] = useState('')
+
+    useEffect(() => {
+        firestore()
+            .collection('doctor')
+            .doc('C9szoier4NxzyH7zbKUV')
+            .get()
+            .then(documentSnapshot => {
+                console.log('User data: ', documentSnapshot.data());
+                fireData(documentSnapshot.data())
+            });
+
+        // Stop listening for updates when no longer required
+
+    }, []);
+    console.log(data)
     return (
         <View style={{ flex: 1, backgroundColor: '#fff' }}>
             <StatusBar StatusBar="dark-content" backgroundColor='#381290' />
@@ -21,7 +37,7 @@ const PDoctors = ({ navigation }) => {
             </View>
 
             <View style={{ backgroundColor: '#fff', alignItems: 'center' }}>
-                <Image source={require('../../assets/images/doctor.png')} style={{ width: 100, height: 100, }} />
+                <Image source={{ uri: data.imageUri }} style={{ width: 100, height: 100, }} />
             </View>
 
 

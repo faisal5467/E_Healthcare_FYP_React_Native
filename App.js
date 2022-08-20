@@ -12,9 +12,13 @@ const App = () => {
   return (
 
     <NavigationContainer>
+      {/* <Stack.Navigator options={{ headerShown: false }}> */}
       {/* <DrawerNavig /> */}
       <MainStackNavigator />
+      {/* <Stack.Screen name='MainStackNavigator' component={MainStackNavigator} options={{ headerShown: false }} />
+        <Stack.Screen name='DrawerNavig' component={DrawerNavig} /> */}
 
+      {/* </Stack.Navigator> */}
     </NavigationContainer >
   );
 }

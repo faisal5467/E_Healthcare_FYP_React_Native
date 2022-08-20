@@ -1,5 +1,7 @@
 import { StyleSheet, Text, View, StatusBar, Image, TextInput, TouchableOpacity } from 'react-native'
 import React, { useState } from 'react'
+import auth from '@react-native-firebase/auth';
+
 import { Colors } from '../constants'
 import Icon from 'react-native-vector-icons/FontAwesome'
 import Buttons from '../components/Buttons'
@@ -7,9 +9,28 @@ import { ScrollView } from 'react-native-gesture-handler'
 import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons'
 import Ionicons from 'react-native-vector-icons/Ionicons'
 import FormInput from '../components/FormInput'
+// import { Validator } from 'react-native-validator'
+
+// const validateFields = (email, password) => {
+//     const isValid = {
+//         email: Validator.isEmail(email),
+//         password: Validator.isStrongPassword(password, {
+//             minLength: 8,
+//             minLowercase: 1,
+//             minUppercase: 1,
+//             minNumbers: 1,
+//             minSymbols: 1,
+//         }),
+//     };
+//     return isValid
+// };
+
+
+
+
+
+
 const SignUp = ({ navigation }) => {
-
-
 
     const [formData, setformData] = useState({
         email: '',
@@ -19,10 +40,45 @@ const SignUp = ({ navigation }) => {
 
     })
 
-    const [email, setEmail] = useState('');
-    const [password, setPassword] = useState('');
-    const [name, setName] = useState('');
-    const [mobile, setMobile] = useState('');
+    const [name, setName] = useState({
+        text: "",
+        errorMessage: ""
+    });
+    const [email, setEmail] = useState({
+        text: "",
+        errorMessage: ""
+    });
+    const [password, setPassword] = useState({
+        text: "",
+        errorMessage: ""
+    });
+
+    const handlerSignUp = () => {
+        auth()
+            .createUserWithEmailAndPassword(email.text, password.text)
+            .then(() => {
+                console.log('User account created & signed in!');
+            })
+            .catch(error => {
+                if (error.code === 'auth/email-already-in-use') {
+                    console.log('That email address is already in use!');
+                }
+
+                if (error.code === 'auth/invalid-email') {
+                    console.log('That email address is invalid!');
+                }
+
+                console.error(error);
+            });
+    }
+
+
+
+
+
+
+
+
 
     return (
         <ScrollView style={{ flex: 1, backgroundColor: '#fff', flexDirection: 'column' }}>
@@ -33,44 +89,50 @@ const SignUp = ({ navigation }) => {
                 <View style={{ flexDirection: 'column', paddingLeft: 8, marginBottom: 40 }}>
                     <FormInput
                         labelValue={name}
-                        onChangeText={(userName) => setName(userName)}
+                        text={email.text}
+                        onChangeText={(text) => setName({ text })}
                         placeholderText="Full Name"
                         iconTypee="account-circle"
-                        keyboardType="email-address"
                         autoCapitalize="none"
                         autoCorrect={false}
                     />
 
                     <FormInput
                         labelValue={email}
-                        onChangeText={(userEmail) => setEmail(userEmail)}
+                        text={email.text}
+                        onChangeText={(text) => setEmail({ text })}
                         placeholderText="Email"
                         iconType="envelope-o"
                         keyboardType="email-address"
                         autoCapitalize="none"
                         autoCorrect={false}
+                        errorMessage={email.errorMessage}
+                        autoCompleteType="email"
+
                     />
 
-                    <FormInput
+                    {/* <FormInput
                         labelValue={mobile}
                         onChangeText={(userMobile) => setMobile(userMobile)}
                         placeholderText="Mobile"
                         iconTypee="call"
                         autoCapitalize="none"
                         autoCorrect={false}
-                    />
+                    /> */}
 
                     <FormInput
                         labelValue={password}
-                        onChangeText={(userPassword) => setPassword(userPassword)}
-                        placeholderText="Password"
+                        text={password.text}
+                        onChangeText={(text) => setPassword({ text })}
+                        placeholderText="password"
                         iconType="lock"
-                        autoCapitalize="none"
+                        secureTextEntry={true}
                         autoCorrect={false}
+                        errorMessage={password.errorMessage}
                     />
 
                 </View>
-                <Buttons btn_text={"SignUp"} on_press={() => console.log({ formData })} />
+                <Buttons btn_text={"SignUp"} on_press={() => handlerSignUp()} />
             </View>
 
             {/* social login section */}

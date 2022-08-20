@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "547114636121",
+    "project_id": "e-healthcare-c326f",
+    "storage_bucket": "e-healthcare-c326f.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:547114636121:android:9727f093acb402ea7ab248",
+        "android_client_info": {
+          "package_name": "com.ehealthcare"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "547114636121-30uf5r1qjshhu0tceeks4373agsfi9l4.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAGMd8fOznL5oziNyhTYqWUhqqhw0sFym0"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "547114636121-30uf5r1qjshhu0tceeks4373agsfi9l4.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

@@ -9,7 +9,6 @@ import ContactUs from '../../components/ContactUs'
 import Privacy from '../../components/Privacy';
 
 const Drawer = createDrawerNavigator();
-
 const DrawerNavig = () => {
     return (
         <Drawer.Navigator drawerContent={(props) => <CustomDrawer {...props} />}
