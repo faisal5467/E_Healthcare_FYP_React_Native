@@ -1,4 +1,4 @@
-import { StyleSheet, Text, View, StatusBar, Image, TextInput, TouchableOpacity } from 'react-native'
+import { StyleSheet, Text, View, StatusBar, Image, TextInput, TouchableOpacity, Alert } from 'react-native'
 import React, { useState } from 'react'
 import auth from '@react-native-firebase/auth';
 
@@ -54,22 +54,28 @@ const SignUp = ({ navigation }) => {
     });
 
     const handlerSignUp = () => {
-        auth()
-            .createUserWithEmailAndPassword(email.text, password.text)
-            .then(() => {
-                console.log('User account created & signed in!');
-            })
-            .catch(error => {
-                if (error.code === 'auth/email-already-in-use') {
-                    console.log('That email address is already in use!');
-                }
+        (email.text && password.text) == "" ? (Alert.alert("Please Enter The Email And Password")) :
+            auth()
+                .createUserWithEmailAndPassword(email.text, password.text)
+                .then(() => {
+                    Alert.alert('User account created & signed in!');
+                    navigation.navigate("DoctorDrawer")
+                })
+                .catch(error => {
 
-                if (error.code === 'auth/invalid-email') {
-                    console.log('That email address is invalid!');
-                }
+                    { error.code === 'auth/email-already-in-use' ? Alert.alert("That email address is already in use!") : Alert.alert('That email address is invalid!') }
 
-                console.error(error);
-            });
+                    // if (error.code === 'auth/email-already-in-use') {
+                    //     console.log('That email address is already in use!');
+                    // }
+
+                    // if (error.code === 'auth/invalid-email') {
+                    //     console.log('That email address is invalid!');
+                    // }
+
+                    //     console.error(error);
+                });
+
     }
 
 

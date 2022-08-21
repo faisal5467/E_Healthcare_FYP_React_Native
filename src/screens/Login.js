@@ -1,4 +1,4 @@
-import { StyleSheet, Text, View, StatusBar, Image, TextInput, TouchableOpacity } from 'react-native'
+import { StyleSheet, Text, View, StatusBar, Image, TextInput, Alert, TouchableOpacity } from 'react-native'
 import React, { useState, useEffect } from 'react'
 import { Colors } from '../../src/constants'
 import auth from '@react-native-firebase/auth';
@@ -22,23 +22,29 @@ const Login = ({ navigation }) => {
 
 
     const handlerSignIn = () => {
-        auth()
-            .signInWithEmailAndPassword(email, password)
-            .then(() => {
-                console.log('User signed in!');
-                navigation.navigate("DrawerNavig")
-            })
-            .catch(error => {
-                if (error.code === 'auth/email-already-in-use') {
-                    console.log('That email address is already in use!');
-                }
+        {
+            (email && password) == "" ? (Alert.alert("Please Enter The Email And Password")) :
+                auth()
+                    .signInWithEmailAndPassword(email, password)
+                    .then(() => {
+                        console.log('User signed in!');
+                        navigation.navigate("DrawerNavig")
 
-                if (error.code === 'auth/invalid-email') {
-                    console.log('That email address is invalid!');
-                }
+                    })
+                    .catch(error => {
 
-                console.error(error);
-            });
+                        // if (error.code === 'auth/invalid-email') {
+                        //     Alert.alert("Hellog")
+                        // }
+                        if (error) {
+                            Alert.alert("Invalid username or password 🙂")
+                        }
+
+                        // console.error(error);
+
+                    });
+        }
+
     }
     return (
         <ScrollView style={{ flex: 1, backgroundColor: '#fff', flexDirection: 'column' }}>
@@ -76,7 +82,9 @@ const Login = ({ navigation }) => {
                             <Text style={{ fontSize: 17, color: '#381290', alignSelf: 'flex-end', paddingTop: 10, }}>Forget Password</Text>
                         </TouchableOpacity>
                     </View>
+                    {
 
+                    }
                     <Buttons btn_text={"Sign In"} on_press={() => handlerSignIn()} />
 
                 </View>

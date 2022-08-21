@@ -1,5 +1,6 @@
 import React from 'react'
 import { StyleSheet, Text, View, TouchableOpacity, ImageBackground, TextInput, ToastAndroid, Alert, TouchableHighlight } from 'react-native'
+import ImagePicker from 'react-native-image-crop-picker';
 import Icon from 'react-native-vector-icons/FontAwesome'
 import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons'
 import Feather from 'react-native-vector-icons/Feather'
@@ -12,8 +13,39 @@ import { Avator, Button } from 'react-native-paper'
 
 
 
-
 const EditProfile = ({ navigation }) => {
+
+
+    const takePhotoFromCamera = () => {
+        ImagePicker.openCamera({
+            width: 500,
+            height: 700,
+            cropping: true,
+        }).then(image => {
+            console.log(image);
+        });
+    }
+
+
+    const choosePhotoFromLibrary = () => {
+        ImagePicker.openPicker({
+            width: 500,
+            height: 800,
+            cropping: true
+        }).then(image => {
+            console.log(image);
+        });
+    }
+
+
+
+
+
+
+
+
+
+
 
     // const [Pic, SetPic] = React.useState('');
     // // for show toast msg
@@ -86,7 +118,7 @@ const EditProfile = ({ navigation }) => {
 
 
 
-                        <TouchableOpacity>
+                        <TouchableOpacity onPress={takePhotoFromCamera}>
                             <View style={{
                                 height: 100,
                                 width: 100,
@@ -114,6 +146,38 @@ const EditProfile = ({ navigation }) => {
                                 </ImageBackground>
                             </View>
                         </TouchableOpacity>
+
+                        <TouchableOpacity onPress={choosePhotoFromLibrary}>
+                            <View style={{
+                                height: 100,
+                                width: 100,
+                                borderRadius: 15,
+                                justifyContent: 'center',
+                                alignItems: 'center',
+                                marginBottom: 40
+                            }}>
+                                <ImageBackground
+                                    source={require('../../assets/images/faisal.jpg')} style={{ width: 100, height: 100 }} imageStyle={{ borderRadius: 15 }} >
+                                    <View style={{
+                                        flex: 1,
+                                        justifyContent: 'center',
+                                        alignItems: 'center'
+                                    }}>
+                                        <Icon name="camera" size={35} color='#fff' style={{
+                                            opacity: 0.7,
+                                            alignItems: 'center',
+                                            justifyContent: 'center',
+                                            borderWidth: 1,
+                                            borderColor: '#fff',
+                                            borderRadius: 10,
+                                        }} />
+                                    </View>
+                                </ImageBackground>
+                            </View>
+                        </TouchableOpacity>
+
+
+
 
                     </View>
                     <View style={styles.action}>
