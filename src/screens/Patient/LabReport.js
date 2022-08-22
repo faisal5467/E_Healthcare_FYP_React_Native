@@ -1,5 +1,6 @@
 import { Animated, BottomSheet, StyleSheet, ImageBackground, Text, View, StatusBar, Image, TextInput, TouchableOpacity } from 'react-native'
 import React, { useState } from 'react'
+import ImagePicker from 'react-native-image-crop-picker';
 import Icon from 'react-native-vector-icons/FontAwesome'
 import { Colors } from '../../constants'
 import Buttons from '../../components/Buttons'
@@ -7,6 +8,32 @@ import { ScrollView } from 'react-native-gesture-handler'
 import FormInput from '../../components/FormInput'
 
 const LabReport = ({ navigation }) => {
+
+
+
+
+    const takePhotoFromCamera = () => {
+        ImagePicker.openCamera({
+            width: 500,
+            height: 700,
+            cropping: true,
+        }).then(image => {
+            console.log(image);
+        });
+    }
+
+
+    const choosePhotoFromLibrary = () => {
+        ImagePicker.openPicker({
+            width: 500,
+            height: 800,
+            cropping: true
+        }).then(image => {
+            console.log(image);
+        });
+    }
+
+
 
     const [formData, setformData] = useState({
         email: '',
@@ -94,61 +121,44 @@ const LabReport = ({ navigation }) => {
                             style={styles.input} placeholder="Problems" placeholderTextColor={"#381290"} />
                     </View>
 
+                    <View style={{ alignItems: 'center' }}>
+                        <Text style={{ color: 'black', marginBottom: 10 }}> Choose from Gallary</Text>
 
-
-                    {/* <BottomSheet
-                        ref={bs}
-                        snapPoints={[330, 0]}
-                        renderContent={renderInner}
-                        renderHeader={renderHeader}
-                        initialSnap={1}
-                        callbackNode={fall}
-                        enabledGestureInteraction={true} /> */}
-
-
-                    {/* <View style={{ alignItems: 'center' }}>
-                        <TouchableOpacity title="Demo PopUp" ref={(target) => popupRef = target} onPress={onShowPopup} onTouchOutside={onclosePopup} data={popuplist}>
+                        <TouchableOpacity onPress={choosePhotoFromLibrary}>
                             <View style={{
                                 height: 100,
                                 width: 100,
                                 borderRadius: 15,
                                 justifyContent: 'center',
-                                alignItems: 'center'
-                            }}> */}
-                    <ImageBackground
-                        source={require('../../assets/images/faisal.jpg')} style={{ width: 100, height: 100, alignSelf: 'center', marginBottom: 20 }} imageStyle={{ borderRadius: 15 }} >
-                        <View style={{
-                            flex: 1,
-                            justifyContent: 'center',
-                            alignItems: 'center'
-                        }}>
-                            <Icon name="camera" size={35} color='#fff' style={{
-                                opacity: 0.7,
                                 alignItems: 'center',
-                                justifyContent: 'center',
-                                borderWidth: 1,
-                                borderColor: '#fff',
-                                borderRadius: 10,
-                            }} />
-                        </View>
-                    </ImageBackground>
-                    {/* </View>
+                                marginBottom: 40,
+
+                            }}>
+                                <ImageBackground
+                                    source={require('../../assets/images/faisal.jpg')} style={{ width: 100, height: 100 }} imageStyle={{ borderRadius: 15 }} >
+                                    <View style={{
+                                        flex: 1,
+                                        justifyContent: 'center',
+                                        alignItems: 'center'
+                                    }}>
+                                        <Icon name="camera" size={35} color='#fff' style={{
+                                            opacity: 0.7,
+                                            alignItems: 'center',
+                                            justifyContent: 'center',
+                                            borderWidth: 1,
+                                            borderColor: '#fff',
+                                            borderRadius: 10,
+                                        }} />
+                                    </View>
+                                </ImageBackground>
+                            </View>
                         </TouchableOpacity>
-                        <Text style={{ marginTop: 10, fontSize: 18, fontWeight: 'bold' }}>Mr.Faisal
-                        </Text>
-                    </View> */}
-
-
-
-
+                    </View>
                     <Buttons btn_text={"Submit Report"} on_press={() => console.log({ formData })} />
 
                 </View>
 
             </View>
-
-
-
 
         </ScrollView >
     )
@@ -163,7 +173,7 @@ const styles = StyleSheet.create({
         width: '90%',
         fontFamily: 'OpenSans-Medium',
         paddingLeft: 20,
-        color: '#381290'
+        color: 'black'
     },
     social_btn: {
         height: 55,
