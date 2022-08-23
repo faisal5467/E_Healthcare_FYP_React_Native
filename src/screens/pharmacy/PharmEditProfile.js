@@ -1,6 +1,6 @@
-import { StyleSheet, Text, View, TouchableOpacity, ImageBackground, TextInput } from 'react-native'
-import React from 'react'
-
+import React, { useState } from 'react'
+import { StyleSheet, Text, View, TouchableOpacity, ImageBackground, TextInput, ToastAndroid, Alert, TouchableHighlight } from 'react-native'
+import ImagePicker from 'react-native-image-crop-picker';
 import Icon from 'react-native-vector-icons/FontAwesome'
 import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons'
 import Feather from 'react-native-vector-icons/Feather'
@@ -8,77 +8,140 @@ import FontAwesome from 'react-native-vector-icons/FontAwesome'
 import Fontisto from 'react-native-vector-icons/Fontisto'
 import Entypo from 'react-native-vector-icons/Entypo'
 import { ScrollView } from 'react-native-gesture-handler'
-import Animated, { Value } from 'react-native-reanimated'
-import Bottomsheet from '../../components/Bottomsheet'
-import { NavigationContainer } from '@react-navigation/native';
-import { createNativeStackNavigator } from '@react-navigation/native-stack';
+import { launchImageLibrary } from 'react-native-image-picker'
+import { Avator, Button } from 'react-native-paper'
+import auth, { firebase } from '@react-native-firebase/auth';
+import firestore from '@react-native-firebase/firestore';
 
 
-const popuplist = [
-    {
-        id: 1,
-        name: 'task'
-    },
-    {
-        id: 2,
-        name: 'ok'
-    },
-    {
-        id: 3,
-        name: 'mast'
-    },
-]
+
+
 const PharmEditProfile = ({ navigation }) => {
 
-    let popupRef = React.createRef()
-    const onShowPopup = () => {
-        popupRef.show()
+
+    const [name, setName] = useState({
+        text: "",
+        errorMessage: ""
+    });
+    const [regNumber, setRegNumer] = useState({
+        text: "",
+        errorMessage: ""
+    });
+    const [email, setEmail] = useState({
+        text: "",
+        errorMessage: ""
+    });
+    const [mobile, setMobile] = useState({
+        text: "",
+        errorMessage: ""
+    });
+    const [city, setCity] = useState({
+        text: "",
+        errorMessage: ""
+    });
+    const [country, setCountry] = useState({
+        text: "",
+        errorMessage: ""
+    });
+
+
+
+    const updateUser = () => {
+
+        firestore()
+            .collection('users')
+            .doc('eM0USHeukMHOjbPJG4iY')
+            .update({
+                name: name.text,
+                regNumber: regNumber.text,
+                email: email.text,
+                mobile: mobile.text,
+                city: city.text,
+                country: country.text,
+
+            })
+            .then(() => {
+                console.log('User updated!');
+                Alert.alert('User Profile Updated Successfully!');
+            });
     }
 
-    const onclosePopup = () => {
-        popupRef.close()
+
+    const updateEmail = () => {
+        console.log(firebase.auth().currentUser.updateEmail(email.text));
     }
 
 
 
 
-    // pehly ka hai ye.....const renderInner = () => (
-    //     <Text>Hello</Text>
-    // )
-    // const renderHeader = () => (
-    //     <View style={styles.header}>
-    //         <View style={styles.panelHeader}>
-    //             <View style={styles.panelHandle}>
-    //             </View>
-    //         </View>
-    //     </View>
-    // );
 
-    // bs = React.createRef();
-    // fall = new Animated.Value(1);
+    // const takePhotoFromCamera = () => {
+    //     ImagePicker.openCamera({
+    //         width: 500,
+    //         height: 700,
+    //         cropping: true,
+    //     }).then(image => {
+    //         console.log(image);
+    //     });
+    // }
 
+
+    const choosePhotoFromLibrary = () => {
+        ImagePicker.openPicker({
+            width: 500,
+            height: 800,
+            cropping: true
+        }).then(image => {
+            console.log(image);
+        });
+    }
 
 
     return (
         <ScrollView>
             <View style={styles.container}>
-                {/* <BottomSheet
-                    ref={this.bs}
-                    snapPoints={[330, 0]}
-                    renderContent={this.renderInner}
-                    renderHeader={this.renderHeader}
-                    initialSnap={1}
-                    callbackNode={this.fall}
-                    enabledGestureInteraction={true} /> */}
+
                 <View style={{ margin: 20 }}>
                     <View style={{ alignItems: 'center' }}>
-                        <TouchableOpacity title="Demo PopUp" ref={(target) => popupRef = target} onPress={onShowPopup} onTouchOutside={onclosePopup} data={popuplist}>
+
+                        {/* 
+                        <TouchableOpacity onPress={takePhotoFromCamera}>
                             <View style={{
                                 height: 100,
                                 width: 100,
                                 borderRadius: 15,
                                 justifyContent: 'center',
-                                alignItems: 'center'
+                                alignItems: 'center',
+                                marginBottom: 40
+                            }}>
+                                <ImageBackground
+                                    source={require('../../assets/images/faisal.jpg')} style={{ width: 100, height: 100 }} imageStyle={{ borderRadius: 15 }} >
+                                    <View style={{
+                                        flex: 1,
+                                        justifyContent: 'center',
+                                        alignItems: 'center'
+                                    }}>
+                                        <Icon name="camera" size={35} color='#fff' style={{
+                                            opacity: 0.7,
+                                            alignItems: 'center',
+                                            justifyContent: 'center',
+                                            borderWidth: 1,
+                                            borderColor: '#fff',
+                                            borderRadius: 10,
+                                        }} />
+                                    </View>
+                                </ImageBackground>
+                            </View>
+                        </TouchableOpacity> */}
+
+                        <TouchableOpacity onPress={choosePhotoFromLibrary}>
+                            <View style={{
+                                height: 100,
+                                width: 100,
+                                borderRadius: 15,
+                                justifyContent: 'center',
+                                alignItems: 'center',
+                                marginBottom: 40
                             }}>
                                 <ImageBackground
                                     source={require('../../assets/images/faisal.jpg')} style={{ width: 100, height: 100 }} imageStyle={{ borderRadius: 15 }} >
@@ -99,69 +162,76 @@ const PharmEditProfile = ({ navigation }) => {
                                 </ImageBackground>
                             </View>
                         </TouchableOpacity>
-                        <Text style={{ marginTop: 10, fontSize: 18, fontWeight: 'bold' }}>Mr.Faisal
-                        </Text>
+
+
+
+
                     </View>
                     <View style={styles.action}>
-                        <MaterialCommunityIcons name="account-outline" size={20} style={{ paddingTop: 13 }} />
+                        <MaterialCommunityIcons name="account-outline" size={25} style={{ paddingTop: 13, color: '#381290' }} />
                         <TextInput
-                            placeholder="First Name"
+                            placeholder="Full Name"
                             placeholderTextColor='#666666'
                             autoCorrect={false}
+                            text={name.text}
+                            onChangeText={(text) => setName({ text })}
                             style={styles.textInput} />
                     </View>
+
                     <View style={styles.action}>
-                        <MaterialCommunityIcons name="account-outline" size={20} style={{ paddingTop: 13 }} />
-                        <TextInput
-                            placeholder="Last Name"
-                            placeholderTextColor='#666666'
-                            autoCorrect={false}
-                            style={styles.textInput} />
-                    </View>
-                    <View style={styles.action}>
-                        <FontAwesome name="pencil-square" size={20} style={{ paddingTop: 13 }} />
+                        <FontAwesome name="pencil-square" size={25} style={{ paddingTop: 13, color: '#381290' }} />
                         <TextInput
                             placeholder="Registration Number"
                             placeholderTextColor='#666666'
                             autoCorrect={false}
+                            text={regNumber.text}
+                            onChangeText={(text) => setRegNumer({ text })}
                             style={styles.textInput} />
                     </View>
                     <View style={styles.action}>
-                        <FontAwesome name="envelope-o" size={20} style={{ paddingTop: 13 }} />
+                        <FontAwesome name="envelope-o" size={25} style={{ paddingTop: 13, color: '#381290' }} />
                         <TextInput
                             placeholder="Email"
                             placeholderTextColor='#666666'
                             autoCorrect={false}
                             keyboardType={'email-address'}
+                            text={email.text}
+                            onChangeText={(text) => setEmail({ text })}
                             style={styles.textInput} />
                     </View>
                     <View style={styles.action}>
-                        <Icon name="phone" size={20} style={{ paddingTop: 13 }} />
+                        <Icon name="phone" size={25} style={{ paddingTop: 13, color: '#381290' }} />
                         <TextInput
                             placeholder="Mobile No"
                             placeholderTextColor='#666666'
                             keyboardType='number-pad'
                             autoCorrect={false}
+                            text={mobile.text}
+                            onChangeText={(text) => setMobile({ text })}
                             style={styles.textInput} />
                     </View>
                     <View style={styles.action}>
-                        <Entypo name="location" size={20} style={{ paddingTop: 13 }} />
+                        <Entypo name="location" size={25} style={{ paddingTop: 13, color: '#381290' }} />
                         <TextInput
                             placeholder="City"
                             placeholderTextColor='#666666'
                             autoCorrect={false}
+                            text={city.text}
+                            onChangeText={(text) => setCity({ text })}
                             style={styles.textInput} />
                     </View>
                     <View style={styles.action}>
-                        <Fontisto name="world-o" size={20} style={{ paddingTop: 13 }} />
+                        <Fontisto name="world-o" size={25} style={{ paddingTop: 13, color: '#381290' }} />
                         <TextInput
                             placeholder="Country"
                             placeholderTextColor='#666666'
                             autoCorrect={false}
+                            text={country.text}
+                            onChangeText={(text) => setCountry({ text })}
                             style={styles.textInput} />
                     </View>
-                    <TouchableOpacity style={styles.commandButton} onPress={() => { }}>
-                        <Text style={styles.panelButtonTitle}>Submit</Text>
+                    <TouchableOpacity style={styles.commandButton} onPress={() => { updateUser(); updateEmail(); }}>
+                        <Text style={styles.panelButtonTitle}>Update</Text>
                     </TouchableOpacity>
                 </View>
             </View>
@@ -180,7 +250,7 @@ const styles = StyleSheet.create({
         borderRadius: 10,
         backgroundColor: '#381290',
         alignItems: 'center',
-        marginTop: 10,
+        marginTop: 40,
     },
     panel: {
         padding: 20,
@@ -240,6 +310,7 @@ const styles = StyleSheet.create({
         flexDirection: 'row',
         borderBottomWidth: 1,
         borderBottomColor: '#D2D1D8',
+        marginTop: 5
 
     },
     actionError: {
@@ -251,7 +322,8 @@ const styles = StyleSheet.create({
     },
     textInput: {
 
-        paddingLeft: 10,
+        paddingLeft: 20,
         color: '#05375a',
+        fontSize: 17
     },
 });

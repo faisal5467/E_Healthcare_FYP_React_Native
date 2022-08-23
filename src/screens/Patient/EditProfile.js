@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useState } from 'react'
 import { StyleSheet, Text, View, TouchableOpacity, ImageBackground, TextInput, ToastAndroid, Alert, TouchableHighlight } from 'react-native'
 import ImagePicker from 'react-native-image-crop-picker';
 import Icon from 'react-native-vector-icons/FontAwesome'
@@ -11,12 +11,68 @@ import { ScrollView } from 'react-native-gesture-handler'
 import { launchImageLibrary } from 'react-native-image-picker'
 import { Avator, Button } from 'react-native-paper'
 import auth, { firebase } from '@react-native-firebase/auth';
-
+import firestore from '@react-native-firebase/firestore';
 
 
 
 
 const EditProfile = ({ navigation }) => {
+
+
+    const [name, setName] = useState({
+        text: "",
+        errorMessage: ""
+    });
+    const [regNumber, setRegNumer] = useState({
+        text: "",
+        errorMessage: ""
+    });
+    const [email, setEmail] = useState({
+        text: "",
+        errorMessage: ""
+    });
+    const [mobile, setMobile] = useState({
+        text: "",
+        errorMessage: ""
+    });
+    const [city, setCity] = useState({
+        text: "",
+        errorMessage: ""
+    });
+    const [country, setCountry] = useState({
+        text: "",
+        errorMessage: ""
+    });
+
+
+
+    const updateUser = () => {
+
+        firestore()
+            .collection('users')
+            .doc('eM0USHeukMHOjbPJG4iY')
+            .update({
+                name: name.text,
+                regNumber: regNumber.text,
+                email: email.text,
+                mobile: mobile.text,
+                city: city.text,
+                country: country.text,
+
+            })
+            .then(() => {
+                console.log('User updated!');
+                Alert.alert('User Profile Updated Successfully!');
+            });
+    }
+
+
+    const updateEmail = () => {
+        console.log(firebase.auth().currentUser.updateEmail(email.text));
+    }
+
+
+
 
 
     // const takePhotoFromCamera = () => {
@@ -40,27 +96,6 @@ const EditProfile = ({ navigation }) => {
         });
     }
 
-
-
-
-
-
-
-
-
-
-
-
-
-    // console.log(firebase.auth().currentUser.updateEmail("test3@gmail.com"));
-
-    const handlerUpdate = async () => {
-        const updateuser = {
-            name: "azhar",
-            email: "abc@gmail.com"
-        };
-        await auth().currentUser.updateProfile(update);
-    }
 
     return (
         <ScrollView>
@@ -138,6 +173,8 @@ const EditProfile = ({ navigation }) => {
                             placeholder="Full Name"
                             placeholderTextColor='#666666'
                             autoCorrect={false}
+                            text={name.text}
+                            onChangeText={(text) => setName({ text })}
                             style={styles.textInput} />
                     </View>
 
@@ -147,6 +184,8 @@ const EditProfile = ({ navigation }) => {
                             placeholder="Registration Number"
                             placeholderTextColor='#666666'
                             autoCorrect={false}
+                            text={regNumber.text}
+                            onChangeText={(text) => setRegNumer({ text })}
                             style={styles.textInput} />
                     </View>
                     <View style={styles.action}>
@@ -156,6 +195,8 @@ const EditProfile = ({ navigation }) => {
                             placeholderTextColor='#666666'
                             autoCorrect={false}
                             keyboardType={'email-address'}
+                            text={email.text}
+                            onChangeText={(text) => setEmail({ text })}
                             style={styles.textInput} />
                     </View>
                     <View style={styles.action}>
@@ -165,6 +206,8 @@ const EditProfile = ({ navigation }) => {
                             placeholderTextColor='#666666'
                             keyboardType='number-pad'
                             autoCorrect={false}
+                            text={mobile.text}
+                            onChangeText={(text) => setMobile({ text })}
                             style={styles.textInput} />
                     </View>
                     <View style={styles.action}>
@@ -173,6 +216,8 @@ const EditProfile = ({ navigation }) => {
                             placeholder="City"
                             placeholderTextColor='#666666'
                             autoCorrect={false}
+                            text={city.text}
+                            onChangeText={(text) => setCity({ text })}
                             style={styles.textInput} />
                     </View>
                     <View style={styles.action}>
@@ -181,9 +226,11 @@ const EditProfile = ({ navigation }) => {
                             placeholder="Country"
                             placeholderTextColor='#666666'
                             autoCorrect={false}
+                            text={country.text}
+                            onChangeText={(text) => setCountry({ text })}
                             style={styles.textInput} />
                     </View>
-                    <TouchableOpacity style={styles.commandButton} onPress={() => { handlerUpdate }}>
+                    <TouchableOpacity style={styles.commandButton} onPress={() => { updateUser(); updateEmail(); }}>
                         <Text style={styles.panelButtonTitle}>Update</Text>
                     </TouchableOpacity>
                 </View>
@@ -277,5 +324,6 @@ const styles = StyleSheet.create({
 
         paddingLeft: 20,
         color: '#05375a',
+        fontSize: 17
     },
 });
