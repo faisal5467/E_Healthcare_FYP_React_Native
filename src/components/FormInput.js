@@ -59,6 +59,9 @@ const styles = StyleSheet.create({
         fontFamily: 'OpenSans-Medium',
         paddingLeft: 12,
         color: 'black',
+        fontSize: 18,
+
+
     },
     withouticon: {
         flexDirection: 'row',

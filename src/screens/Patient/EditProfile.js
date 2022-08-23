@@ -10,21 +10,24 @@ import Entypo from 'react-native-vector-icons/Entypo'
 import { ScrollView } from 'react-native-gesture-handler'
 import { launchImageLibrary } from 'react-native-image-picker'
 import { Avator, Button } from 'react-native-paper'
+import auth, { firebase } from '@react-native-firebase/auth';
+
+
 
 
 
 const EditProfile = ({ navigation }) => {
 
 
-    const takePhotoFromCamera = () => {
-        ImagePicker.openCamera({
-            width: 500,
-            height: 700,
-            cropping: true,
-        }).then(image => {
-            console.log(image);
-        });
-    }
+    // const takePhotoFromCamera = () => {
+    //     ImagePicker.openCamera({
+    //         width: 500,
+    //         height: 700,
+    //         cropping: true,
+    //     }).then(image => {
+    //         console.log(image);
+    //     });
+    // }
 
 
     const choosePhotoFromLibrary = () => {
@@ -47,42 +50,17 @@ const EditProfile = ({ navigation }) => {
 
 
 
-    // const [Pic, SetPic] = React.useState('');
-    // // for show toast msg
-    // const setToastMsg = msg => {
-    //     ToastAndroid, showWithGravity(msg, ToastAndroid.SHORT, ToastAndroid.CENTER);
-    // };
-
-    // const uploadImage = () => {
-    //     let options = {
-    //         mediaType: 'photo',
-    //         quality: 1,
-    //         includeBase64: true,
-    //     };
-    //     launchImageLibrary(options, response => {
-    //         if (response.didCancel) {
-    //             setToastMsg('Cancelled Image selection')
-    //         }
-    //         else if (response.errorCode == 'permission') {
-    //             setToastMsg('permission not satisfied')
-    //         }
-    //         else if (response.errorCode == 'others') {
-    //             setToastMsg(response.errorMessage);
-    //         }
-    //         else if (response.assets[0].fileSize > 2097152) {
-    //             Alert.alert('Maximum image size exceeded', 'Please choose image under 2MB', [{ text: 'OK' }],
-    //             );
-    //         }
-    //         else {
-    //             SetPic()(response.assets[0].base64);
-    //         }
-    //     });
 
 
-    // };
+    // console.log(firebase.auth().currentUser.updateEmail("test3@gmail.com"));
 
-
-
+    const handlerUpdate = async () => {
+        const updateuser = {
+            name: "azhar",
+            email: "abc@gmail.com"
+        };
+        await auth().currentUser.updateProfile(update);
+    }
 
     return (
         <ScrollView>
@@ -92,32 +70,6 @@ const EditProfile = ({ navigation }) => {
                     <View style={{ alignItems: 'center' }}>
 
                         {/* 
-                        <View>
-                            <TouchableHighlight>
-                                onPress={() => alert('pressed')}
-                                backgroundColor='yellow'
-
-                                <Avator.Image
-                                    size={50}
-                                    source={{ uri: 'data:image/png;base64' + Pic }} />
-                            </TouchableHighlight>
-                        </View>
-
-                        <View>
-                            <Button mode="contained" onPress={() => uploadImage()}>
-                                upload Image
-                            </Button>
-
-                            <Button mode="contained" onPress={() => uploadImage()}>
-                                Remove Image
-                            </Button>
-                        </View> */}
-
-
-
-
-
-
                         <TouchableOpacity onPress={takePhotoFromCamera}>
                             <View style={{
                                 height: 100,
@@ -145,7 +97,7 @@ const EditProfile = ({ navigation }) => {
                                     </View>
                                 </ImageBackground>
                             </View>
-                        </TouchableOpacity>
+                        </TouchableOpacity> */}
 
                         <TouchableOpacity onPress={choosePhotoFromLibrary}>
                             <View style={{
@@ -231,8 +183,8 @@ const EditProfile = ({ navigation }) => {
                             autoCorrect={false}
                             style={styles.textInput} />
                     </View>
-                    <TouchableOpacity style={styles.commandButton} onPress={() => { }}>
-                        <Text style={styles.panelButtonTitle}>UpDate</Text>
+                    <TouchableOpacity style={styles.commandButton} onPress={() => { handlerUpdate }}>
+                        <Text style={styles.panelButtonTitle}>Update</Text>
                     </TouchableOpacity>
                 </View>
             </View>

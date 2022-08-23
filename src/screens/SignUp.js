@@ -1,7 +1,7 @@
 import { StyleSheet, Text, View, StatusBar, Image, TextInput, TouchableOpacity, Alert } from 'react-native'
 import React, { useState } from 'react'
-import auth from '@react-native-firebase/auth';
-
+import auth, { firebase } from '@react-native-firebase/auth';
+import { updateProfile } from '@react-native-firebase/auth';
 import { Colors } from '../constants'
 import Icon from 'react-native-vector-icons/FontAwesome'
 import Buttons from '../components/Buttons'
@@ -9,6 +9,8 @@ import { ScrollView } from 'react-native-gesture-handler'
 import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons'
 import Ionicons from 'react-native-vector-icons/Ionicons'
 import FormInput from '../components/FormInput'
+import firestore from '@react-native-firebase/firestore';
+import { GoogleSignin } from '@react-native-google-signin/google-signin';
 // import { Validator } from 'react-native-validator'
 
 // const validateFields = (email, password) => {
@@ -32,13 +34,6 @@ import FormInput from '../components/FormInput'
 
 const SignUp = ({ navigation }) => {
 
-    const [formData, setformData] = useState({
-        email: '',
-        password: '',
-        name: '',
-        mobile: '',
-
-    })
 
     const [name, setName] = useState({
         text: "",
@@ -53,13 +48,66 @@ const SignUp = ({ navigation }) => {
         errorMessage: ""
     });
 
+
+
+    const AddUser = () => {
+        firestore()
+            .collection('users')
+            .add({
+                name: name.text,
+                email: email.text,
+            })
+            .then(() => {
+                console.log('User added!');
+            });
+    }
+
+    //     firestore()
+    //   .collection('Users')
+    //   .doc('ABC')
+    //   .set({
+    //     name: name.text,
+    //     email: email.text,
+    //   })
+    //   .then(() => {
+    //     console.log('User added!');
+    //   });
+
+    GoogleSignin.configure({
+        webClientId: '547114636121-30uf5r1qjshhu0tceeks4373agsfi9l4.apps.googleusercontent.com',
+    });
+
+
+    async function onGoogleButtonPress() {
+        // Get the users ID token
+        const { idToken } = await GoogleSignin.signIn();
+
+        // Create a Google credential with the token
+        const googleCredential = auth.GoogleAuthProvider.credential(idToken);
+
+        // Sign-in the user with the credential
+        return auth().signInWithCredential(googleCredential);
+    }
+
+
+    // const [formData, setformData] = useState({
+    //     email: '',
+    //     password: '',
+    //     name: '',
+    //     mobile: '',
+
+    // })
+
+
+
+
     const handlerSignUp = () => {
         (email.text && password.text) == "" ? (Alert.alert("Please Enter The Email And Password")) :
             auth()
                 .createUserWithEmailAndPassword(email.text, password.text)
                 .then(() => {
                     Alert.alert('User account created & signed in!');
-                    navigation.navigate("DoctorDrawer")
+                    // navigation.navigate("DoctorDrawer")
                 })
                 .catch(error => {
 
@@ -77,13 +125,6 @@ const SignUp = ({ navigation }) => {
                 });
 
     }
-
-
-
-
-
-
-
 
 
     return (
@@ -117,15 +158,6 @@ const SignUp = ({ navigation }) => {
 
                     />
 
-                    {/* <FormInput
-                        labelValue={mobile}
-                        onChangeText={(userMobile) => setMobile(userMobile)}
-                        placeholderText="Mobile"
-                        iconTypee="call"
-                        autoCapitalize="none"
-                        autoCorrect={false}
-                    /> */}
-
                     <FormInput
                         labelValue={password}
                         text={password.text}
@@ -138,7 +170,7 @@ const SignUp = ({ navigation }) => {
                     />
 
                 </View>
-                <Buttons btn_text={"SignUp"} on_press={() => handlerSignUp()} />
+                <Buttons btn_text={"SignUp"} on_press={() => { handlerSignUp(); AddUser(); }} />
             </View>
 
             {/* social login section */}
@@ -161,7 +193,7 @@ const SignUp = ({ navigation }) => {
                     alignItems: 'center',
                     width: '95%'
                 }}>
-                    <TouchableOpacity onPress={() => console.log("google login")} style={styles.social_btn}>
+                    <TouchableOpacity onPress={() => onGoogleButtonPress().then(() => console.log('Signed in with Google!'))} style={styles.social_btn}>
                         <Image style={styles.social_img} source=
                             {require('../assets/images/google.png')} />
                         <Text style={{

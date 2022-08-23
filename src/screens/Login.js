@@ -5,10 +5,36 @@ import auth from '@react-native-firebase/auth';
 import Icon from 'react-native-vector-icons/FontAwesome'
 import Buttons from '../components/Buttons'
 import { ScrollView } from 'react-native-gesture-handler'
-
 import FormInput from '../components/FormInput'
+import { GoogleSignin } from '@react-native-google-signin/google-signin';
+
+
 
 const Login = ({ navigation }) => {
+
+
+    GoogleSignin.configure({
+        webClientId: '547114636121-30uf5r1qjshhu0tceeks4373agsfi9l4.apps.googleusercontent.com',
+    });
+
+
+    async function onGoogleButtonPress() {
+        // Get the users ID token
+        const { idToken } = await GoogleSignin.signIn();
+
+        // Create a Google credential with the token
+        const googleCredential = auth.GoogleAuthProvider.credential(idToken);
+
+        // Sign-in the user with the credential
+        auth().signInWithCredential(googleCredential)
+            .then(() => {
+                console.log('User signed in!');
+                navigation.navigate("DrawerNavig")
+
+            })
+    }
+
+
 
 
     const [formData, setformData] = useState({
@@ -98,7 +124,7 @@ const Login = ({ navigation }) => {
                 }}>Or</Text>
 
                 <View style={{ flexDirection: 'column', alignItems: 'center', width: '95%' }}>
-                    <TouchableOpacity onPress={() => console.log("google login")} style={styles.social_btn}>
+                    <TouchableOpacity onPress={() => onGoogleButtonPress().then(() => console.log('Signed in with Google!'))} style={styles.social_btn}>
                         <Image style={styles.social_img} source=
                             {require('../assets/images/google.png')} />
                         <Text style={{
